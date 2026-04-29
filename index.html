@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://hotboat.cl/">
-  <title>Tinajas Flotantes en Pucón | HotBoat Chile — Laguna Rivera</title>
-  <meta name="description" content="Tinaja flotante privada en Laguna Rivera, Pucón. Aguas termales con vistas únicas. Reseñas reales en Google, fotos de la experiencia y cómo llegar. Reserva tu experiencia HotBoat.">
+  <title>Termas Navegables en Pucón | HotBoat Chile — Laguna Rivera</title>
+  <meta name="description" content="Termas navegables privadas en Laguna Rivera, Pucón. Aguas termales con vistas únicas. Reseñas reales en Google, fotos de la experiencia y cómo llegar. Reserva tu experiencia HotBoat.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0d6973">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CL">
-  <meta property="og:title" content="Tinajas Flotantes en Pucón | HotBoat Chile">
+  <meta property="og:title" content="Termas Navegables en Pucón | HotBoat Chile">
   <meta property="og:description" content="Experiencia privada en Laguna Rivera: agua caliente, naturaleza y una propuesta irrepetible. 204 reseñas 5.0 en Google.">
   <meta property="og:url" content="https://hotboat.cl/">
   <meta property="og:image" content="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tinajas Flotantes en Pucón | HotBoat Chile">
-  <meta name="twitter:description" content="Tinaja flotante privada en Laguna Rivera (Pucón). Reserva y vive HotBoat.">
+  <meta name="twitter:title" content="Termas Navegables en Pucón | HotBoat Chile">
+  <meta name="twitter:description" content="Termas navegables privadas en Laguna Rivera (Pucón). Reserva y vive HotBoat.">
   <meta name="twitter:image" content="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp">
   <link rel="icon" type="image/png" sizes="32x32" href="https://hotboatchile.com/wp-content/uploads/cropped-Screenshot_3-32x32.jpg">
   <link rel="preload" as="image" href="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp">
@@ -32,7 +32,7 @@
     "@id": "https://hotboatchile.com/#business",
     "name": "HotBoat Chile",
     "alternateName": "Hot Boat Chile",
-    "description": "Tinajas flotantes privadas en Laguna Rivera, experiencia térmica y paisaje en Pucón.",
+    "description": "Termas navegables privadas en Laguna Rivera, experiencia térmica y paisaje en Pucón.",
     "url": "https://hotboat.cl/",
     "telephone": "+56975780920",
     "image": ["https://hotboatchile.com/wp-content/uploads/IMG_3070.webp"],
@@ -140,9 +140,9 @@
     .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; }
     .hero-overlay {
       position:absolute; inset:0; z-index:1;
-      background:linear-gradient(to left, rgba(10,20,24,.80) 0%, rgba(10,20,24,.55) 55%, rgba(10,20,24,.20) 100%);
+      background:linear-gradient(to right, rgba(10,20,24,.80) 0%, rgba(10,20,24,.55) 55%, rgba(10,20,24,.20) 100%);
     }
-    .hero .wrap { display:flex; justify-content:flex-end; }
+    .hero .wrap { display:flex; justify-content:flex-start; }
     .hero-content { position:relative; z-index:2; color:#fff; max-width:560px; padding:var(--py) 0; }
     .hero-content h1 { color:#fff; font-size:clamp(2rem,5.5vw,3.1rem); margin-bottom:1rem; text-shadow:0 2px 12px rgba(0,0,0,.2); }
     .hero-sub { font-size:clamp(.95rem,2vw,1.1rem); color:rgba(255,253,249,.88); margin-bottom:1.5rem; max-width:46ch; }
@@ -334,6 +334,36 @@
     footer a { color:rgba(255,253,249,.8); }
     footer a:hover { color:#fff; }
 
+    /* ---- LANG SWITCHER ---- */
+    .lang-switcher { position:relative; }
+    .lang-btn {
+      display:inline-flex; align-items:center; gap:.35rem;
+      padding:.4rem .7rem; border-radius:var(--r-pill);
+      background:transparent; border:1.5px solid var(--line);
+      color:var(--muted); cursor:pointer; font-family:var(--sans);
+      font-size:.8rem; font-weight:600; min-height:36px;
+      transition:background var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease);
+    }
+    .lang-btn:hover { background:var(--sea-light); border-color:var(--sea); color:var(--sea-deep); }
+    .lang-btn svg { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+    .lang-dropdown {
+      position:absolute; top:calc(100% + .4rem); right:0;
+      background:var(--paper); border:1px solid var(--line);
+      border-radius:var(--r-sm); box-shadow:var(--sh);
+      padding:.3rem; list-style:none; margin:0; min-width:148px;
+      opacity:0; transform:translateY(-6px); pointer-events:none;
+      transition:opacity 150ms var(--ease), transform 150ms var(--ease);
+      z-index:100;
+    }
+    .lang-switcher.open .lang-dropdown { opacity:1; transform:translateY(0); pointer-events:all; }
+    .lang-dropdown li {
+      padding:.55rem .85rem; border-radius:8px; cursor:pointer;
+      font-size:.85rem; font-weight:500; color:var(--ink);
+      transition:background var(--t) var(--ease), color var(--t) var(--ease);
+    }
+    .lang-dropdown li:hover { background:var(--sea-light); color:var(--sea-deep); }
+    .lang-dropdown li.lang-active { color:var(--sea-deep); font-weight:700; }
+
     /* ---- STICKY MOBILE ---- */
     .sticky { display:none; }
 
@@ -343,6 +373,9 @@
     /* ---- RESPONSIVE ---- */
     @media (max-width:768px) {
       .nav-links a:not(.btn-primary) { display:none; }
+      .hero .wrap { justify-content:flex-start; }
+      .hero-content { max-width:100%; }
+      .hero .ctas { justify-content:flex-end; }
       .sticky {
         display:flex; position:fixed; bottom:0; left:0; right:0;
         padding:.75rem 1rem; background:rgba(255,253,249,.96);
@@ -369,16 +402,29 @@
   <header>
     <nav class="nav" aria-label="Navegación principal">
       <div class="wrap nav-inner">
-        <a class="brand" href="https://hotboatchile.com/" aria-label="HotBoat Chile — Inicio">
+        <span class="brand" aria-label="HotBoat Chile">
           <img src="https://hotboatchile.com/wp-content/uploads/Logo-sin-Fondo-y-sin-CHILE-1.png" alt="HotBoat Chile" height="40" width="auto" loading="eager">
-        </a>
+        </span>
         <div class="nav-links">
-          <a href="#incluye">Incluye</a>
-          <a href="#resenas">Reseñas</a>
-          <a href="#fotos">Fotos</a>
-          <a href="#faq">FAQ</a>
-          <a href="#ubicacion">Ubicación</a>
-          <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Reservar</a>
+          <a href="#incluye" data-i18n="nav-incluye">Incluye</a>
+          <a href="#resenas" data-i18n="nav-resenas">Reseñas</a>
+          <a href="#fotos" data-i18n="nav-fotos">Fotos</a>
+          <a href="#faq" data-i18n="nav-faq">FAQ</a>
+          <a href="#ubicacion" data-i18n="nav-ubicacion">Ubicación</a>
+          <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener" data-i18n="nav-reservar">Reservar</a>
+        </div>
+        <div class="lang-switcher" id="lang-switcher">
+          <button class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Cambiar idioma">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-current">ES</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="lang-dropdown" id="lang-dropdown" role="listbox">
+            <li role="option" data-lang="es" class="lang-active">Español</li>
+            <li role="option" data-lang="en">English</li>
+            <li role="option" data-lang="pt">Português</li>
+            <li role="option" data-lang="fr">Français</li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -387,7 +433,7 @@
   <main id="main">
 
     <!-- HERO -->
-    <section class="hero" aria-label="HotBoat Chile — Tinaja flotante privada en Pucón">
+    <section class="hero" aria-label="HotBoat Chile — Termas navegables privadas en Pucón">
       <div class="hero-bg" aria-hidden="true">
         <img
           src="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp"
@@ -399,19 +445,19 @@
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="wrap">
         <div class="hero-content">
-          <h1>Tinaja flotante privada en Laguna Rivera, Pucón</h1>
-          <p class="hero-sub">Agua termal caliente, naturaleza y una experiencia que solo existe en Chile.</p>
+          <h1 data-i18n="hero-h1">Termas navegables privadas en Laguna Rivera, Pucón</h1>
+          <p class="hero-sub" data-i18n="hero-sub">Agua termal caliente, naturaleza y una experiencia que solo existe en Chile.</p>
           <div class="badges" aria-label="Puntos clave">
-            <span class="badge"><span class="badge-star" aria-hidden="true">★</span> 204 reseñas 5.0</span>
-            <span class="badge">Experiencia privada</span>
-            <span class="badge">Abierto todo el año</span>
-            <span class="badge">2 – 6 personas</span>
+            <span class="badge"><span class="badge-star" aria-hidden="true">★</span> <span data-i18n="badge-reviews">204 reseñas 5.0</span></span>
+            <span class="badge" data-i18n="badge-private">Experiencia privada</span>
+            <span class="badge" data-i18n="badge-open">Abierto todo el año</span>
+            <span class="badge" data-i18n="badge-people">2 – 7 personas</span>
           </div>
-          <p class="hero-price">desde <strong>$139.990</strong></p>
+          <p class="hero-price"><span data-i18n="hero-price-from">desde</span> <strong>$139.990</strong></p>
           <div class="ctas">
             <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Ver disponibilidad
+              <span data-i18n="btn-book">Ver disponibilidad</span>
             </a>
             <a class="btn btn-wa" href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -426,9 +472,9 @@
     <section class="sec" id="incluye" aria-labelledby="h-incluye">
       <div class="wrap">
         <div class="sec-head" data-a>
-          <span class="label">La experiencia</span>
-          <h2 id="h-incluye">Todo lo que incluye HotBoat</h2>
-          <p>Una experiencia completa — no llegas a improvisar. Todo está listo para que solo disfrutes.</p>
+          <span class="label" data-i18n="feat-label">La experiencia</span>
+          <h2 id="h-incluye" data-i18n="feat-h2">Todo lo que incluye HotBoat</h2>
+          <p data-i18n="feat-desc">Una experiencia completa — no llegas a improvisar. Todo está listo para que solo disfrutes.</p>
         </div>
         <div class="feat-grid">
           <div class="feat-card" data-a data-d="1">
@@ -436,8 +482,8 @@
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div class="feat-text">
-              <strong>2 a 6 personas</strong>
-              <span>Experiencia completamente privada para tu grupo.</span>
+              <strong data-i18n="feat-1-title">2 a 7 personas</strong>
+              <span data-i18n="feat-1-desc">Experiencia completamente privada para tu grupo.</span>
             </div>
           </div>
           <div class="feat-card" data-a data-d="2">
@@ -445,8 +491,8 @@
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div class="feat-text">
-              <strong>2 horas de duración</strong>
-              <span>Tiempo justo para desconectarte de todo.</span>
+              <strong data-i18n="feat-2-title">2 horas de duración</strong>
+              <span data-i18n="feat-2-desc">Tiempo justo para desconectarte de todo.</span>
             </div>
           </div>
           <div class="feat-card" data-a data-d="3">
@@ -454,8 +500,8 @@
               <svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
             </div>
             <div class="feat-text">
-              <strong>Temperatura a tu gusto</strong>
-              <span>Tú eliges el calor del agua, antes y durante el paseo.</span>
+              <strong data-i18n="feat-3-title">Temperatura a tu gusto</strong>
+              <span data-i18n="feat-3-desc">Tú eliges el calor del agua, antes y durante el paseo.</span>
             </div>
           </div>
           <div class="feat-card" data-a data-d="1">
@@ -463,8 +509,8 @@
               <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
             </div>
             <div class="feat-text">
-              <strong>Música Bluetooth</strong>
-              <span>Parlante a bordo + bolsas impermeables para tu teléfono.</span>
+              <strong data-i18n="feat-4-title">Música Bluetooth</strong>
+              <span data-i18n="feat-4-desc">Parlante a bordo + bolsas impermeables para tu teléfono.</span>
             </div>
           </div>
           <div class="feat-card" data-a data-d="2">
@@ -472,8 +518,8 @@
               <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
             </div>
             <div class="feat-text">
-              <strong>Video con dron</strong>
-              <span>¡Llevate un video cinematográfico de tu aventura!</span>
+              <strong data-i18n="feat-5-title">Video con dron</strong>
+              <span data-i18n="feat-5-desc">¡Llevate un video cinematográfico de tu aventura!</span>
             </div>
           </div>
           <div class="feat-card" data-a data-d="3">
@@ -481,8 +527,8 @@
               <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
             </div>
             <div class="feat-text">
-              <strong>Tabla de picoteo + bebidas</strong>
-              <span>Tabla a bordo y cooler con bebidas frías para disfrutar navegando.</span>
+              <strong data-i18n="feat-6-title">Tabla de picoteo + bebidas</strong>
+              <span data-i18n="feat-6-desc">Tabla a bordo y cooler con bebidas frías para disfrutar navegando.</span>
             </div>
           </div>
           <div class="feat-card" data-a data-d="1">
@@ -490,8 +536,8 @@
               <svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
             <div class="feat-text">
-              <strong>Motor eléctrico</strong>
-              <span>Silencioso, ecológico y fácil de navegar tú mismo.</span>
+              <strong data-i18n="feat-7-title">Motor eléctrico</strong>
+              <span data-i18n="feat-7-desc">Silencioso, ecológico y fácil de navegar tú mismo.</span>
             </div>
           </div>
           <div class="feat-card" data-a data-d="2">
@@ -499,8 +545,8 @@
               <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div class="feat-text">
-              <strong>Limpieza antes de cada uso</strong>
-              <span>La tinaja se limpia completamente para cada grupo.</span>
+              <strong data-i18n="feat-8-title">Limpieza antes de cada uso</strong>
+              <span data-i18n="feat-8-desc">Las termas se limpian completamente para cada grupo.</span>
             </div>
           </div>
         </div>
@@ -513,22 +559,22 @@
     <section class="sec" id="precio" aria-labelledby="h-precio">
       <div class="wrap">
         <div class="price-card" data-a>
-          <span class="label" style="background:rgba(255,255,255,.15);color:#fff;">Precio</span>
-          <h2 id="h-precio">¿Cuánto cuesta?</h2>
-          <p class="price-from">desde</p>
+          <span class="label" style="background:rgba(255,255,255,.15);color:#fff;" data-i18n="price-label">Precio</span>
+          <h2 id="h-precio" data-i18n="price-h2">¿Cuánto cuesta?</h2>
+          <p class="price-from" data-i18n="price-from">desde</p>
           <p class="price-val">$139.990</p>
-          <p class="price-sub">Para tu grupo de 2 a 6 personas · 2 horas en la laguna</p>
+          <p class="price-sub" data-i18n="price-sub">Para tu grupo de 2 a 7 personas · 2 horas en la laguna</p>
           <ul class="price-list" aria-label="Qué incluye">
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Tinaja flotante privada con temperatura a elección</li>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Video cinematográfico con dron incluido</li>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Música Bluetooth + bolsas impermeables</li>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Tabla de picoteo + bebidas frías en cooler</li>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Motor eléctrico — lo navegas tú mismo</li>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Limpieza total antes de cada uso</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="price-li-1">Termas navegables privadas con temperatura a elección</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="price-li-2">Video cinematográfico con dron incluido</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="price-li-3">Música Bluetooth + bolsas impermeables</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="price-li-4">Tabla de picoteo + bebidas frías en cooler</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="price-li-5">Motor eléctrico — lo navegas tú mismo</span></li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="price-li-6">Limpieza total antes de cada uso</span></li>
           </ul>
           <div class="ctas" style="justify-content:center;">
-            <a class="btn" style="background:#fff;color:var(--sea-deep);box-shadow:0 4px 16px rgba(0,0,0,.15);" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Ver disponibilidad</a>
-            <a class="btn btn-ghost" href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank">Consultar por WhatsApp</a>
+            <a class="btn" style="background:#fff;color:var(--sea-deep);box-shadow:0 4px 16px rgba(0,0,0,.15);" href="https://whatsapp.hotboat.cl/booking" rel="noopener" data-i18n="btn-book">Ver disponibilidad</a>
+            <a class="btn btn-ghost" href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank" data-i18n="btn-whatsapp">Consultar por WhatsApp</a>
           </div>
         </div>
       </div>
@@ -540,22 +586,8 @@
     <section class="sec sec-alt" id="resenas" aria-labelledby="h-resenas">
       <div class="wrap">
         <div class="sec-head" data-a>
-          <span class="label">Reseñas</span>
-          <h2 id="h-resenas">Lo que dicen nuestros clientes</h2>
-        </div>
-        <div class="reviews-header" data-a>
-          <div>
-            <div class="rating-row">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="rating-num">5,0</span>
-              <span class="rating-meta">· 204 reseñas en Google</span>
-            </div>
-            <a class="g-cta" href="https://www.google.com/maps/search/?api=1&query=HotBoat+Chile+Pucón" rel="noopener noreferrer" target="_blank">
-              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              Ver todas las reseñas en Google Maps
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
+          <span class="label" data-i18n="sec-reviews-label">Reseñas</span>
+          <h2 id="h-resenas" data-i18n="sec-reviews-h2">Lo que dicen nuestros clientes</h2>
         </div>
         <div data-a>
           <script src="https://static.elfsight.com/platform/platform.js" async></script>
@@ -568,24 +600,24 @@
     <section class="sec" id="fotos" aria-labelledby="h-fotos">
       <div class="wrap">
         <div class="sec-head" data-a>
-          <span class="label">Galería</span>
-          <h2 id="h-fotos">La experiencia en imágenes</h2>
+          <span class="label" data-i18n="sec-gallery-label">Galería</span>
+          <h2 id="h-fotos" data-i18n="sec-gallery-h2">La experiencia en imágenes</h2>
         </div>
         <div class="gallery" data-a>
           <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp" alt="Vista de Laguna Rivera desde la tinaja flotante HotBoat en Pucón" width="800" height="600" loading="lazy" decoding="async">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp" alt="Vista de Laguna Rivera desde las termas navegables HotBoat en Pucón" width="800" height="600" loading="lazy" decoding="async">
           </figure>
           <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3069.webp" alt="Tinaja flotante HotBoat Chile navegando en Laguna Rivera" width="800" height="600" loading="lazy" decoding="async">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3069.webp" alt="Termas navegables HotBoat Chile navegando en Laguna Rivera" width="800" height="600" loading="lazy" decoding="async">
           </figure>
           <figure class="gal-item">
             <img src="https://hotboatchile.com/wp-content/uploads/IMG_3066.webp" alt="Experiencia privada HotBoat rodeada de naturaleza en Pucón" width="800" height="600" loading="lazy" decoding="async">
           </figure>
           <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3065.webp" alt="Paisaje volcánico y Laguna Rivera desde la tinaja HotBoat" width="800" height="600" loading="lazy" decoding="async">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3065.webp" alt="Paisaje volcánico y Laguna Rivera desde las termas navegables HotBoat" width="800" height="600" loading="lazy" decoding="async">
           </figure>
           <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_5325.webp" alt="Atardecer en la tinaja flotante HotBoat Chile, Pucón" width="800" height="600" loading="lazy" decoding="async" style="object-position:center 60%;">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_5325.webp" alt="Atardecer en las termas navegables HotBoat Chile, Pucón" width="800" height="600" loading="lazy" decoding="async" style="object-position:center 60%;">
           </figure>
         </div>
         <div class="gal-nav" aria-label="Controles galería">
@@ -600,7 +632,7 @@
         <div style="text-align:center;margin-top:1.75rem;">
           <a class="btn btn-outline" href="https://instagram.com/hotboat_chile" rel="noopener noreferrer" target="_blank">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            Ver más en Instagram
+            <span data-i18n="btn-instagram">Ver más en Instagram</span>
           </a>
         </div>
       </div>
@@ -613,45 +645,45 @@
       <div class="wrap">
         <div class="sec-head" data-a>
           <span class="label">FAQ</span>
-          <h2 id="h-faq">Preguntas frecuentes</h2>
-          <p>Todo lo que necesitás saber antes de reservar.</p>
+          <h2 id="h-faq" data-i18n="sec-faq-h2">Preguntas frecuentes</h2>
+          <p data-i18n="sec-faq-sub">Todo lo que necesitás saber antes de reservar.</p>
         </div>
         <div class="faq-list">
           <details class="faq" data-a data-d="1">
-            <summary>¿Funciona cuando llueve o hace frío?
+            <summary><span data-i18n="faq-1-q">¿Funciona cuando llueve o hace frío?</span>
               <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
-            <div class="faq-body">Sí. HotBoat opera <strong>todo el año</strong>. En días fríos o lluviosos estar en agua caliente rodeado de naturaleza es especialmente increíble.</div>
+            <div class="faq-body" data-i18n-html="faq-1-a">Sí. HotBoat opera <strong>todo el año</strong>. En días fríos o lluviosos estar en agua caliente rodeado de naturaleza es especialmente increíble.</div>
           </details>
           <details class="faq" data-a data-d="2">
-            <summary>¿Cómo reservo?
+            <summary><span data-i18n="faq-2-q">¿Cómo reservo?</span>
               <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
-            <div class="faq-body">Podés reservar desde el botón <strong>"Ver disponibilidad"</strong> para elegir fecha y hora online, o escribirnos por <strong>WhatsApp al +56 9 7578 0920</strong> si preferís coordinar personalmente.</div>
+            <div class="faq-body" data-i18n-html="faq-2-a">Podés reservar desde el botón <strong>"Ver disponibilidad"</strong> para elegir fecha y hora online, o escribirnos por <strong>WhatsApp al +56 9 7578 0920</strong> si preferís coordinar personalmente.</div>
           </details>
           <details class="faq" data-a data-d="3">
-            <summary>¿Se necesita licencia para conducir el HotBoat?
+            <summary><span data-i18n="faq-3-q">¿Se necesita licencia para conducir el HotBoat?</span>
               <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
-            <div class="faq-body">No. En Chile solo se requiere licencia para operar motores de más de 9,9 HP, que no es el caso de HotBoat.</div>
+            <div class="faq-body" data-i18n-html="faq-3-a">No. En Chile solo se requiere licencia para operar motores de más de 9,9 HP, que no es el caso de HotBoat.</div>
           </details>
           <details class="faq" data-a data-d="1">
-            <summary>¿Es difícil conducir?
+            <summary><span data-i18n="faq-4-q">¿Es difícil conducir?</span>
               <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
-            <div class="faq-body">Para nada. Cualquiera a bordo puede navegar usando un sencillo mando, ya sea desde el agua caliente o sentado en cubierta. Además, nuestro personal te da un breve tutorial antes de salir.</div>
+            <div class="faq-body" data-i18n-html="faq-4-a">Para nada. Cualquiera a bordo puede navegar usando un sencillo mando, ya sea desde el agua caliente o sentado en cubierta. Además, nuestro personal te da un breve tutorial antes de salir.</div>
           </details>
           <details class="faq" data-a data-d="1">
-            <summary>¿Cuáles son los horarios?
+            <summary><span data-i18n="faq-5-q">¿Cuáles son los horarios?</span>
               <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
-            <div class="faq-body">Atendemos <strong>todos los días</strong>, desde el amanecer hasta las <strong>23:00</strong> (última salida), dependiendo de la temporada.</div>
+            <div class="faq-body" data-i18n-html="faq-5-a">Atendemos <strong>todos los días</strong>, desde el amanecer hasta las <strong>23:00</strong> (última salida), dependiendo de la temporada.</div>
           </details>
           <details class="faq" data-a data-d="2">
-            <summary>¿Puedo llevar niños?
+            <summary><span data-i18n="faq-6-q">¿Puedo llevar niños?</span>
               <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
-            <div class="faq-body">¡Sí! Los niños lo pasan increíble. Pagan desde los 6 años — los menores de esa edad no se consideran en el número de personas de la reserva.</div>
+            <div class="faq-body" data-i18n-html="faq-6-a">¡Sí! Los niños lo pasan increíble. Pagan desde los 6 años — los menores de esa edad no se consideran en el número de personas de la reserva.</div>
           </details>
         </div>
       </div>
@@ -661,9 +693,9 @@
     <section class="sec" id="ubicacion" aria-labelledby="h-ubi">
       <div class="wrap">
         <div class="sec-head" data-a>
-          <span class="label">Ubicación</span>
-          <h2 id="h-ubi">¿Dónde estamos?</h2>
-          <p>Laguna Rivera, Pucón — Región de la Araucanía, Chile.</p>
+          <span class="label" data-i18n="sec-location-label">Ubicación</span>
+          <h2 id="h-ubi" data-i18n="sec-location-h2">¿Dónde estamos?</h2>
+          <p data-i18n="sec-location-sub">Laguna Rivera, Pucón — Región de la Araucanía, Chile.</p>
         </div>
         <div class="map-wrap" data-a>
           <iframe
@@ -680,10 +712,10 @@
     <!-- FINAL CTA -->
     <section class="cta-sec" aria-labelledby="h-final">
       <div class="wrap">
-        <h2 id="h-final">¿Listo para vivir la experiencia?</h2>
-        <p>Reservá tu fecha y viví algo que no existe en ningún otro lugar de Chile.</p>
+        <h2 id="h-final" data-i18n="cta-h2">¿Listo para vivir la experiencia?</h2>
+        <p data-i18n="cta-p">Reservá tu fecha y viví algo que no existe en ningún otro lugar de Chile.</p>
         <div class="ctas" style="justify-content:center;">
-          <a class="btn" style="background:#fff;color:var(--sea-deep);font-size:1rem;padding:.9rem 2rem;box-shadow:0 4px 20px rgba(0,0,0,.15);" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Ver disponibilidad</a>
+          <a class="btn" style="background:#fff;color:var(--sea-deep);font-size:1rem;padding:.9rem 2rem;box-shadow:0 4px 20px rgba(0,0,0,.15);" href="https://whatsapp.hotboat.cl/booking" rel="noopener" data-i18n="btn-book">Ver disponibilidad</a>
           <a class="btn btn-wa" href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
@@ -782,6 +814,249 @@
     })();
   </script>
 
+  <!-- I18N -->
+  <script>
+    (function () {
+      var T = {
+        es: {
+          'nav-incluye':'Incluye','nav-resenas':'Reseñas','nav-fotos':'Fotos','nav-faq':'FAQ',
+          'nav-ubicacion':'Ubicación','nav-reservar':'Reservar',
+          'hero-h1':'Termas navegables privadas en Laguna Rivera, Pucón',
+          'hero-sub':'Agua termal caliente, naturaleza y una experiencia que solo existe en Chile.',
+          'badge-reviews':'204 reseñas 5.0','badge-private':'Experiencia privada',
+          'badge-open':'Abierto todo el año','badge-people':'2 – 7 personas',
+          'hero-price-from':'desde','btn-book':'Ver disponibilidad','btn-whatsapp':'Consultar por WhatsApp',
+          'feat-label':'La experiencia','feat-h2':'Todo lo que incluye HotBoat',
+          'feat-desc':'Una experiencia completa — no llegas a improvisar. Todo está listo para que solo disfrutes.',
+          'feat-1-title':'2 a 7 personas','feat-1-desc':'Experiencia completamente privada para tu grupo.',
+          'feat-2-title':'2 horas de duración','feat-2-desc':'Tiempo justo para desconectarte de todo.',
+          'feat-3-title':'Temperatura a tu gusto','feat-3-desc':'Tú eliges el calor del agua, antes y durante el paseo.',
+          'feat-4-title':'Música Bluetooth','feat-4-desc':'Parlante a bordo + bolsas impermeables para tu teléfono.',
+          'feat-5-title':'Video con dron','feat-5-desc':'¡Llevate un video cinematográfico de tu aventura!',
+          'feat-6-title':'Tabla de picoteo + bebidas','feat-6-desc':'Tabla a bordo y cooler con bebidas frías para disfrutar navegando.',
+          'feat-7-title':'Motor eléctrico','feat-7-desc':'Silencioso, ecológico y fácil de navegar tú mismo.',
+          'feat-8-title':'Limpieza antes de cada uso','feat-8-desc':'Las termas se limpian completamente para cada grupo.',
+          'price-label':'Precio','price-h2':'¿Cuánto cuesta?','price-from':'desde',
+          'price-sub':'Para tu grupo de 2 a 7 personas · 2 horas en la laguna',
+          'price-li-1':'Termas navegables privadas con temperatura a elección',
+          'price-li-2':'Video cinematográfico con dron incluido',
+          'price-li-3':'Música Bluetooth + bolsas impermeables',
+          'price-li-4':'Tabla de picoteo + bebidas frías en cooler',
+          'price-li-5':'Motor eléctrico — lo navegas tú mismo',
+          'price-li-6':'Limpieza total antes de cada uso',
+          'sec-reviews-label':'Reseñas','sec-reviews-h2':'Lo que dicen nuestros clientes',
+          'sec-gallery-label':'Galería','sec-gallery-h2':'La experiencia en imágenes',
+          'btn-instagram':'Ver más en Instagram',
+          'sec-faq-h2':'Preguntas frecuentes','sec-faq-sub':'Todo lo que necesitás saber antes de reservar.',
+          'faq-1-q':'¿Funciona cuando llueve o hace frío?',
+          'faq-1-a':'Sí. HotBoat opera <strong>todo el año</strong>. En días fríos o lluviosos estar en agua caliente rodeado de naturaleza es especialmente increíble.',
+          'faq-2-q':'¿Cómo reservo?',
+          'faq-2-a':'Podés reservar desde el botón <strong>"Ver disponibilidad"</strong> para elegir fecha y hora online, o escribirnos por <strong>WhatsApp al +56 9 7578 0920</strong> si preferís coordinar personalmente.',
+          'faq-3-q':'¿Se necesita licencia para conducir el HotBoat?',
+          'faq-3-a':'No. En Chile solo se requiere licencia para operar motores de más de 9,9 HP, que no es el caso de HotBoat.',
+          'faq-4-q':'¿Es difícil conducir?',
+          'faq-4-a':'Para nada. Cualquiera a bordo puede navegar usando un sencillo mando, ya sea desde el agua caliente o sentado en cubierta. Además, nuestro personal te da un breve tutorial antes de salir.',
+          'faq-5-q':'¿Cuáles son los horarios?',
+          'faq-5-a':'Atendemos <strong>todos los días</strong>, desde el amanecer hasta las <strong>23:00</strong> (última salida), dependiendo de la temporada.',
+          'faq-6-q':'¿Puedo llevar niños?',
+          'faq-6-a':'¡Sí! Los niños lo pasan increíble. Pagan desde los 6 años — los menores de esa edad no se consideran en el número de personas de la reserva.',
+          'sec-location-label':'Ubicación','sec-location-h2':'¿Dónde estamos?',
+          'sec-location-sub':'Laguna Rivera, Pucón — Región de la Araucanía, Chile.',
+          'cta-h2':'¿Listo para vivir la experiencia?',
+          'cta-p':'Reservá tu fecha y viví algo que no existe en ningún otro lugar de Chile.'
+        },
+        en: {
+          'nav-incluye':'Includes','nav-resenas':'Reviews','nav-fotos':'Photos','nav-faq':'FAQ',
+          'nav-ubicacion':'Location','nav-reservar':'Book now',
+          'hero-h1':'Private floating thermal spa on Laguna Rivera, Pucón',
+          'hero-sub':'Hot thermal water, nature, and an experience that only exists in Chile.',
+          'badge-reviews':'204 reviews 5.0','badge-private':'Private experience',
+          'badge-open':'Open all year','badge-people':'2 – 7 people',
+          'hero-price-from':'from','btn-book':'Check availability','btn-whatsapp':'Ask via WhatsApp',
+          'feat-label':'The experience','feat-h2':'Everything HotBoat includes',
+          'feat-desc':'A complete experience — no improvising. Everything is ready so you can just enjoy.',
+          'feat-1-title':'2 to 7 people','feat-1-desc':'Completely private experience for your group.',
+          'feat-2-title':'2 hours duration','feat-2-desc':'Just the right time to disconnect from everything.',
+          'feat-3-title':'Temperature of your choice','feat-3-desc':'You choose the water temperature, before and during the ride.',
+          'feat-4-title':'Bluetooth music','feat-4-desc':'Onboard speaker + waterproof bags for your phone.',
+          'feat-5-title':'Drone video','feat-5-desc':'Take home a cinematic video of your adventure!',
+          'feat-6-title':'Snack board + drinks','feat-6-desc':'Snack board onboard and cooler with cold drinks to enjoy while sailing.',
+          'feat-7-title':'Electric motor','feat-7-desc':'Silent, eco-friendly, and easy to navigate yourself.',
+          'feat-8-title':'Cleaned before each use','feat-8-desc':'The thermal spa is fully cleaned before each group.',
+          'price-label':'Pricing','price-h2':'How much does it cost?','price-from':'from',
+          'price-sub':'For your group of 2 to 7 people · 2 hours on the lake',
+          'price-li-1':'Private floating thermal spa with temperature of your choice',
+          'price-li-2':'Cinematic drone video included',
+          'price-li-3':'Bluetooth music + waterproof phone bags',
+          'price-li-4':'Snack board + cold drinks in cooler',
+          'price-li-5':'Electric motor — you navigate it yourself',
+          'price-li-6':'Full clean before every use',
+          'sec-reviews-label':'Reviews','sec-reviews-h2':'What our guests say',
+          'sec-gallery-label':'Gallery','sec-gallery-h2':'The experience in pictures',
+          'btn-instagram':'See more on Instagram',
+          'sec-faq-h2':'Frequently asked questions','sec-faq-sub':'Everything you need to know before booking.',
+          'faq-1-q':'Does it work when it rains or is cold?',
+          'faq-1-a':'Yes. HotBoat operates <strong>all year round</strong>. On cold or rainy days, soaking in hot water surrounded by nature is especially incredible.',
+          'faq-2-q':'How do I book?',
+          'faq-2-a':'You can book via the <strong>"Check availability"</strong> button to choose date and time online, or message us on <strong>WhatsApp at +56 9 7578 0920</strong> if you prefer to coordinate personally.',
+          'faq-3-q':'Do I need a license to drive the HotBoat?',
+          'faq-3-a':'No. In Chile a license is only required for engines above 9.9 HP, which is not the case with HotBoat.',
+          'faq-4-q':'Is it hard to drive?',
+          'faq-4-a':'Not at all. Anyone on board can navigate with a simple joystick, either from the thermal spa or sitting on deck. Our staff gives you a quick tutorial before you set off.',
+          'faq-5-q':'What are the operating hours?',
+          'faq-5-a':'We operate <strong>every day</strong>, from sunrise until <strong>23:00</strong> (last departure), depending on the season.',
+          'faq-6-q':'Can I bring children?',
+          'faq-6-a':'Yes! Kids have a great time. They pay from age 6 — children under that age are not counted in the booking headcount.',
+          'sec-location-label':'Location','sec-location-h2':'Where are we?',
+          'sec-location-sub':'Laguna Rivera, Pucón — Araucanía Region, Chile.',
+          'cta-h2':'Ready to live the experience?',
+          'cta-p':'Book your date and experience something that exists nowhere else in Chile.'
+        },
+        pt: {
+          'nav-incluye':'Inclui','nav-resenas':'Avaliações','nav-fotos':'Fotos','nav-faq':'FAQ',
+          'nav-ubicacion':'Localização','nav-reservar':'Reservar',
+          'hero-h1':'Termas navegáveis privadas na Laguna Rivera, Pucón',
+          'hero-sub':'Água termal quente, natureza e uma experiência que só existe no Chile.',
+          'badge-reviews':'204 avaliações 5.0','badge-private':'Experiência privada',
+          'badge-open':'Aberto o ano todo','badge-people':'2 – 7 pessoas',
+          'hero-price-from':'a partir de','btn-book':'Ver disponibilidade','btn-whatsapp':'Consultar pelo WhatsApp',
+          'feat-label':'A experiência','feat-h2':'Tudo que o HotBoat inclui',
+          'feat-desc':'Uma experiência completa — sem improvisar. Tudo pronto para você só curtir.',
+          'feat-1-title':'2 a 7 pessoas','feat-1-desc':'Experiência completamente privada para o seu grupo.',
+          'feat-2-title':'2 horas de duração','feat-2-desc':'Tempo certo para se desconectar de tudo.',
+          'feat-3-title':'Temperatura a seu gosto','feat-3-desc':'Você escolhe a temperatura da água, antes e durante o passeio.',
+          'feat-4-title':'Música Bluetooth','feat-4-desc':'Alto-falante a bordo + bolsas impermeáveis para o seu celular.',
+          'feat-5-title':'Vídeo com drone','feat-5-desc':'Leve um vídeo cinematográfico da sua aventura!',
+          'feat-6-title':'Tábua de frios + bebidas','feat-6-desc':'Tábua a bordo e cooler com bebidas geladas para curtir navegando.',
+          'feat-7-title':'Motor elétrico','feat-7-desc':'Silencioso, ecológico e fácil de navegar você mesmo.',
+          'feat-8-title':'Limpeza antes de cada uso','feat-8-desc':'As termas são completamente limpas para cada grupo.',
+          'price-label':'Preço','price-h2':'Quanto custa?','price-from':'a partir de',
+          'price-sub':'Para o seu grupo de 2 a 7 pessoas · 2 horas na lagoa',
+          'price-li-1':'Termas navegáveis privadas com temperatura a escolha',
+          'price-li-2':'Vídeo cinematográfico com drone incluído',
+          'price-li-3':'Música Bluetooth + bolsas impermeáveis',
+          'price-li-4':'Tábua de frios + bebidas geladas no cooler',
+          'price-li-5':'Motor elétrico — você mesmo navega',
+          'price-li-6':'Limpeza completa antes de cada uso',
+          'sec-reviews-label':'Avaliações','sec-reviews-h2':'O que nossos clientes dizem',
+          'sec-gallery-label':'Galeria','sec-gallery-h2':'A experiência em imagens',
+          'btn-instagram':'Ver mais no Instagram',
+          'sec-faq-h2':'Perguntas frequentes','sec-faq-sub':'Tudo o que você precisa saber antes de reservar.',
+          'faq-1-q':'Funciona quando chove ou faz frio?',
+          'faq-1-a':'Sim. O HotBoat opera <strong>o ano todo</strong>. Em dias frios ou chuvosos, relaxar em água quente cercado de natureza é especialmente incrível.',
+          'faq-2-q':'Como faço a reserva?',
+          'faq-2-a':'Você pode reservar pelo botão <strong>"Ver disponibilidade"</strong> para escolher data e hora online, ou nos escrever no <strong>WhatsApp +56 9 7578 0920</strong> se preferir coordenar pessoalmente.',
+          'faq-3-q':'Precisa de habilitação para conduzir o HotBoat?',
+          'faq-3-a':'Não. No Chile, habilitação é exigida apenas para motores acima de 9,9 HP, o que não é o caso do HotBoat.',
+          'faq-4-q':'É difícil de conduzir?',
+          'faq-4-a':'De jeito nenhum. Qualquer pessoa a bordo pode navegar com um controle simples, tanto da banheira quente quanto sentado no convés. Nossa equipe dá um tutorial rápido antes de sair.',
+          'faq-5-q':'Quais são os horários?',
+          'faq-5-a':'Atendemos <strong>todos os dias</strong>, do amanhecer até as <strong>23:00</strong> (última saída), dependendo da temporada.',
+          'faq-6-q':'Posso levar crianças?',
+          'faq-6-a':'Sim! As crianças adoram. Pagam a partir dos 6 anos — menores dessa idade não são contados no número de pessoas da reserva.',
+          'sec-location-label':'Localização','sec-location-h2':'Onde estamos?',
+          'sec-location-sub':'Laguna Rivera, Pucón — Região da Araucanía, Chile.',
+          'cta-h2':'Pronto para viver a experiência?',
+          'cta-p':'Reserve sua data e viva algo que não existe em nenhum outro lugar do Chile.'
+        },
+        fr: {
+          'nav-incluye':'Inclus','nav-resenas':'Avis','nav-fotos':'Photos','nav-faq':'FAQ',
+          'nav-ubicacion':'Localisation','nav-reservar':'Réserver',
+          'hero-h1':'Thermes navigables privés sur Laguna Rivera, Pucón',
+          'hero-sub':'Eau thermale chaude, nature et une expérience qui n\'existe qu\'au Chili.',
+          'badge-reviews':'204 avis 5.0','badge-private':'Expérience privée',
+          'badge-open':'Ouvert toute l\'année','badge-people':'2 – 7 personnes',
+          'hero-price-from':'à partir de','btn-book':'Voir les disponibilités','btn-whatsapp':'Demander par WhatsApp',
+          'feat-label':'L\'expérience','feat-h2':'Tout ce qu\'inclut HotBoat',
+          'feat-desc':'Une expérience complète — rien à improviser. Tout est prêt pour que vous profitiez.',
+          'feat-1-title':'2 à 7 personnes','feat-1-desc':'Expérience entièrement privée pour votre groupe.',
+          'feat-2-title':'2 heures de durée','feat-2-desc':'Le temps idéal pour décrocher de tout.',
+          'feat-3-title':'Température au choix','feat-3-desc':'Vous choisissez la chaleur de l\'eau, avant et pendant la balade.',
+          'feat-4-title':'Musique Bluetooth','feat-4-desc':'Haut-parleur à bord + pochettes imperméables pour votre téléphone.',
+          'feat-5-title':'Vidéo par drone','feat-5-desc':'Repartez avec une vidéo cinématographique de votre aventure !',
+          'feat-6-title':'Plateau snacks + boissons','feat-6-desc':'Plateau à bord et glacière avec boissons fraîches pour profiter en naviguant.',
+          'feat-7-title':'Moteur électrique','feat-7-desc':'Silencieux, écologique et facile à naviguer soi-même.',
+          'feat-8-title':'Nettoyé avant chaque usage','feat-8-desc':'Les thermes sont entièrement nettoyés avant chaque groupe.',
+          'price-label':'Tarif','price-h2':'Combien ça coûte ?','price-from':'à partir de',
+          'price-sub':'Pour votre groupe de 2 à 7 personnes · 2 heures sur le lac',
+          'price-li-1':'Thermes navigables privés avec température au choix',
+          'price-li-2':'Vidéo cinématographique par drone incluse',
+          'price-li-3':'Musique Bluetooth + pochettes imperméables',
+          'price-li-4':'Plateau snacks + boissons fraîches dans la glacière',
+          'price-li-5':'Moteur électrique — vous naviguez vous-même',
+          'price-li-6':'Nettoyage complet avant chaque utilisation',
+          'sec-reviews-label':'Avis','sec-reviews-h2':'Ce que disent nos clients',
+          'sec-gallery-label':'Galerie','sec-gallery-h2':'L\'expérience en images',
+          'btn-instagram':'Voir plus sur Instagram',
+          'sec-faq-h2':'Questions fréquentes','sec-faq-sub':'Tout ce que vous devez savoir avant de réserver.',
+          'faq-1-q':'Ça marche quand il pleut ou qu\'il fait froid ?',
+          'faq-1-a':'Oui. HotBoat fonctionne <strong>toute l\'année</strong>. Par temps froid ou pluvieux, se baigner dans une eau chaude entouré de nature est particulièrement incroyable.',
+          'faq-2-q':'Comment réserver ?',
+          'faq-2-a':'Vous pouvez réserver via le bouton <strong>"Voir les disponibilités"</strong> pour choisir date et heure en ligne, ou nous écrire sur <strong>WhatsApp au +56 9 7578 0920</strong> si vous préférez coordonner personnellement.',
+          'faq-3-q':'Faut-il un permis pour conduire le HotBoat ?',
+          'faq-3-a':'Non. Au Chili, un permis n\'est requis que pour les moteurs de plus de 9,9 CV, ce qui n\'est pas le cas du HotBoat.',
+          'faq-4-q':'Est-ce difficile à conduire ?',
+          'faq-4-a':'Pas du tout. N\'importe qui à bord peut naviguer avec une simple manette, depuis le bain chaud ou assis sur le pont. Notre personnel vous donne un bref tutoriel avant le départ.',
+          'faq-5-q':'Quels sont les horaires ?',
+          'faq-5-a':'Nous accueillons <strong>tous les jours</strong>, du lever du soleil jusqu\'à <strong>23h00</strong> (dernier départ), selon la saison.',
+          'faq-6-q':'Puis-je emmener des enfants ?',
+          'faq-6-a':'Oui ! Les enfants adorent. Ils paient à partir de 6 ans — les moins de cet âge ne sont pas comptés dans le nombre de personnes de la réservation.',
+          'sec-location-label':'Localisation','sec-location-h2':'Où sommes-nous ?',
+          'sec-location-sub':'Laguna Rivera, Pucón — Région de l\'Araucanía, Chili.',
+          'cta-h2':'Prêt à vivre l\'expérience ?',
+          'cta-p':'Réservez votre date et vivez quelque chose qui n\'existe nulle part ailleurs au Chili.'
+        }
+      };
+      var LABELS = { es:'ES', en:'EN', pt:'PT', fr:'FR' };
+
+      function applyLang(lang) {
+        if (!T[lang]) return;
+        var t = T[lang];
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var k = el.getAttribute('data-i18n');
+          if (t[k] !== undefined) el.textContent = t[k];
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+          var k = el.getAttribute('data-i18n-html');
+          if (t[k] !== undefined) el.innerHTML = t[k];
+        });
+        var cur = document.getElementById('lang-current');
+        if (cur) cur.textContent = LABELS[lang] || lang.toUpperCase();
+        document.querySelectorAll('#lang-dropdown li').forEach(function (li) {
+          li.classList.toggle('lang-active', li.dataset.lang === lang);
+        });
+        document.documentElement.lang = lang === 'es' ? 'es-CL' : lang;
+        try { localStorage.setItem('hb-lang', lang); } catch (e) {}
+      }
+
+      var switcher = document.getElementById('lang-switcher');
+      var btn = document.getElementById('lang-btn');
+      var dropdown = document.getElementById('lang-dropdown');
+      if (btn && switcher && dropdown) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = switcher.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+        });
+        document.addEventListener('click', function () {
+          switcher.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+        dropdown.addEventListener('click', function (e) {
+          var li = e.target.closest('li[data-lang]');
+          if (!li) return;
+          applyLang(li.dataset.lang);
+          switcher.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      var saved;
+      try { saved = localStorage.getItem('hb-lang'); } catch (e) {}
+      if (saved && T[saved] && saved !== 'es') applyLang(saved);
+    })();
+  </script>
+
   <!-- MAP LAZY LOAD -->
   <script>
     (function () {
@@ -805,5 +1080,6 @@
       } else { load(); }
     })();
   </script>
+  <script src="tracker.js" defer></script>
 </body>
 </html>

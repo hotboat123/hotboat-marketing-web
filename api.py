@@ -126,15 +126,19 @@ def track(body: TrackRequest):
         return {"ok": False}
     now        = datetime.now(CHILE_TZ)
     time_label = now.strftime("%H:%M")
-    with _lock:
-        _insert(
-            sid, event, body.extra,
-            (body.lang     or "es")[:8],
-            (body.referrer or "")[:200],
-            body.is_returning,
-            now.isoformat(),
-            time_label,
-        )
+    try:
+        with _lock:
+            _insert(
+                sid, event, body.extra,
+                (body.lang     or "es")[:8],
+                (body.referrer or "")[:200],
+                body.is_returning,
+                now.isoformat(),
+                time_label,
+            )
+    except Exception as e:
+        print(f"[TRACK ERROR] {e}", flush=True)
+        return {"ok": False, "error": str(e)}
     return {"ok": True}
 
 

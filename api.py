@@ -106,6 +106,7 @@ else:
             return c.execute(sql, params).fetchall()
 
 _init_db()
+print(f"[DB] Using {'PostgreSQL' if USE_PG else 'SQLite (no DATABASE_URL found)'}", flush=True)
 
 # ── Modelos ───────────────────────────────────────────────────────────────────
 class TrackRequest(BaseModel):

@@ -1,5 +1,7 @@
 node_modules/
 .claude/
+__pycache__/
+*.py[cod]
 
 .DS_Store
 Thumbs.db

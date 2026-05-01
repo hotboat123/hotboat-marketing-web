@@ -1,12 +1,25 @@
 import os, threading
 from datetime import datetime
+from pathlib import Path
 from typing import Optional
 
 import pytz
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+
+from meta_pixel import (
+    apply_meta_pixel_placeholder,
+    get_meta_pixel_id,
+    meta_pixel_startup_message,
+)
+
+_ROOT_DIR = Path(__file__).resolve().parent
+_INDEX_PATH = _ROOT_DIR / "index.html"
+_META_PIXEL_ID = get_meta_pixel_id()
+print(meta_pixel_startup_message(), flush=True)
 
 CHILE_TZ     = pytz.timezone("America/Santiago")
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
@@ -198,5 +211,21 @@ def session_detail(sid: str):
     ]}
 
 
-# ── Sirve la landing ──────────────────────────────────────────────────────────
+# ── Sirve la landing (pixel Meta inyectado si hay META_PIXEL_ID) ─────────────
+def _serve_index() -> HTMLResponse:
+    raw = _INDEX_PATH.read_text(encoding="utf-8")
+    body = apply_meta_pixel_placeholder(raw, _META_PIXEL_ID)
+    return HTMLResponse(content=body, media_type="text/html; charset=utf-8")
+
+
+@app.get("/")
+def landing_root():
+    return _serve_index()
+
+
+@app.get("/index.html")
+def landing_index():
+    return _serve_index()
+
+
 app.mount("/", StaticFiles(directory=os.path.dirname(__file__) or ".", html=True), name="static")

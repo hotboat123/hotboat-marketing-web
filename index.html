@@ -1026,7 +1026,7 @@
         document.querySelectorAll('#lang-dropdown li').forEach(function (li) {
           li.classList.toggle('lang-active', li.dataset.lang === lang);
         });
-        document.documentElement.lang = lang === 'es' ? 'es-CL' : lang;
+        document.documentElement.lang = lang === 'es' ? 'es-CL' : (lang === 'pt' ? 'pt-BR' : lang);
         try { localStorage.setItem('hb-lang', lang); } catch (e) {}
       }
 
@@ -1052,9 +1052,15 @@
         });
       }
 
-      var saved;
-      try { saved = localStorage.getItem('hb-lang'); } catch (e) {}
-      if (saved && T[saved] && saved !== 'es') applyLang(saved);
+      var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+      var fromPrPath = path === '/pr';
+      if (fromPrPath) {
+        applyLang('pt');
+      } else {
+        var saved;
+        try { saved = localStorage.getItem('hb-lang'); } catch (e) {}
+        if (saved && T[saved] && saved !== 'es') applyLang(saved);
+      }
     })();
   </script>
 

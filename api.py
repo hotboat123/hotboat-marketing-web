@@ -228,4 +228,11 @@ def landing_index():
     return _serve_index()
 
 
+@app.get("/pr")
+@app.get("/pr/")
+def landing_pt_br():
+    """Misma landing; el cliente fuerza portugués si pathname es /pr."""
+    return _serve_index()
+
+
 app.mount("/", StaticFiles(directory=os.path.dirname(__file__) or ".", html=True), name="static")

@@ -1053,9 +1053,14 @@
       }
 
       var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
-      var fromPrPath = path === '/pr';
-      if (fromPrPath) {
+      if (path === '/pr') {
         applyLang('pt');
+      } else if (path === '/en') {
+        applyLang('en');
+      } else if (path === '/fr') {
+        applyLang('fr');
+      } else if (path === '/' || path === '/index.html') {
+        applyLang('es');
       } else {
         var saved;
         try { saved = localStorage.getItem('hb-lang'); } catch (e) {}

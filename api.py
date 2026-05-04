@@ -231,7 +231,19 @@ def landing_index():
 @app.get("/pr")
 @app.get("/pr/")
 def landing_pt_br():
-    """Misma landing; el cliente fuerza portugués si pathname es /pr."""
+    """Misma landing; el cliente fuerza idioma según pathname (/pr, /en, /fr)."""
+    return _serve_index()
+
+
+@app.get("/en")
+@app.get("/en/")
+def landing_en():
+    return _serve_index()
+
+
+@app.get("/fr")
+@app.get("/fr/")
+def landing_fr():
     return _serve_index()
 
 

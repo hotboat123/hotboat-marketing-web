@@ -230,7 +230,7 @@
     .carousel-track::-webkit-scrollbar { display:none; }
     .carousel-track:active { cursor:grabbing; }
     .review-card {
-      flex:0 0 300px; scroll-snap-align:start;
+      flex:0 0 300px; scroll-snap-align:start; scroll-snap-stop:always;
       background:var(--paper); border:1px solid var(--line);
       border-radius:var(--r); overflow:hidden;
       box-shadow:var(--sh-sm);
@@ -858,24 +858,46 @@
     })();
   </script>
 
-  <!-- CAROUSEL -->
+  <!-- CAROUSEL (reviews: exact card index — scrollBy was misaligned on mobile) -->
   <script>
     (function () {
       var track = document.getElementById('rev-track');
       if (!track) return;
       var prev = document.getElementById('rev-prev');
       var next = document.getElementById('rev-next');
-      var cardW = function () { return track.querySelector('.review-card').offsetWidth + 16; };
-      next.addEventListener('click', function () { track.scrollBy({ left: cardW(), behavior: 'smooth' }); });
-      prev.addEventListener('click', function () { track.scrollBy({ left: -cardW(), behavior: 'smooth' }); });
-      var isDragging = false, startX, scrollLeft;
-      track.addEventListener('mousedown', function (e) { isDragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+      var items = Array.prototype.slice.call(track.querySelectorAll('.review-card'));
+      if (!items.length || !prev || !next) return;
+      var total = items.length;
+      var currentIdx = 0;
+
+      function goTo(idx) {
+        idx = Math.max(0, Math.min(idx, total - 1));
+        currentIdx = idx;
+        track.scrollTo({ left: items[idx].offsetLeft, behavior: 'smooth' });
+      }
+
+      function syncIndex() {
+        var sl = track.scrollLeft;
+        var best = 0, bestDist = Infinity;
+        items.forEach(function (item, i) {
+          var d = Math.abs(item.offsetLeft - sl);
+          if (d < bestDist) { bestDist = d; best = i; }
+        });
+        currentIdx = best;
+      }
+
+      next.addEventListener('click', function () { goTo(currentIdx + 1); });
+      prev.addEventListener('click', function () { goTo(currentIdx - 1); });
+      track.addEventListener('scroll', syncIndex, { passive: true });
+
+      var isDragging = false, startX, scrollLeft0;
+      track.addEventListener('mousedown', function (e) { isDragging = true; startX = e.pageX - track.offsetLeft; scrollLeft0 = track.scrollLeft; });
       track.addEventListener('mouseleave', function () { isDragging = false; });
       track.addEventListener('mouseup', function () { isDragging = false; });
       track.addEventListener('mousemove', function (e) {
         if (!isDragging) return;
         e.preventDefault();
-        track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX);
+        track.scrollLeft = scrollLeft0 - (e.pageX - track.offsetLeft - startX);
       });
     })();
   </script>

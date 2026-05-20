@@ -132,6 +132,11 @@ class TrackRequest(BaseModel):
     is_returning: Optional[bool] = False
 
 # ── Endpoints ─────────────────────────────────────────────────────────────────
+@app.get("/api/debug-headers")
+def debug_headers(request: Request):
+    return dict(request.headers)
+
+
 @app.post("/api/track")
 def track(body: TrackRequest):
     sid   = (body.session_id or "").strip()[:64]

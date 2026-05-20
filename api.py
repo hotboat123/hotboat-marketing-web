@@ -227,7 +227,7 @@ def _serve_packs() -> HTMLResponse:
 
 @app.get("/")
 def landing_root(request: Request):
-    host = request.headers.get("host", "")
+    host = request.headers.get("x-forwarded-host") or request.headers.get("host", "")
     if host.startswith("packs."):
         return _serve_packs()
     return _serve_index()

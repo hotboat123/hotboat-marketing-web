@@ -580,44 +580,6 @@
 
     <div class="divider"></div>
 
-    <!-- GALERÍA -->
-    <section class="sec" id="fotos" aria-labelledby="h-fotos">
-      <div class="wrap">
-        <div class="sec-head" data-a>
-          <span class="label">Fotos</span>
-          <h2 id="h-fotos">El lugar donde vas a estar</h2>
-        </div>
-        <div class="gallery" data-a>
-          <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp" alt="Vista de Laguna Rivera desde las termas navegables HotBoat en Pucón" width="800" height="600" loading="lazy" decoding="async">
-          </figure>
-          <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3069.webp" alt="Termas navegables HotBoat Chile navegando en Laguna Rivera" width="800" height="600" loading="lazy" decoding="async">
-          </figure>
-          <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3066.webp" alt="Experiencia privada HotBoat rodeada de naturaleza en Pucón" width="800" height="600" loading="lazy" decoding="async">
-          </figure>
-          <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3065.webp" alt="Paisaje volcánico y Laguna Rivera desde las termas navegables HotBoat" width="800" height="600" loading="lazy" decoding="async">
-          </figure>
-          <figure class="gal-item">
-            <img src="https://hotboatchile.com/wp-content/uploads/IMG_5325.webp" alt="Atardecer en las termas navegables HotBoat Chile, Pucón" width="800" height="600" loading="lazy" decoding="async" style="object-position:center 60%;">
-          </figure>
-        </div>
-        <div class="gal-nav" aria-label="Controles galería">
-          <button class="carousel-btn" id="gal-prev" aria-label="Foto anterior">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <span id="gal-counter" style="font-size:.85rem;color:var(--muted);min-width:3rem;text-align:center;">1 / 5</span>
-          <button class="carousel-btn" id="gal-next" aria-label="Siguiente foto">
-            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
     <!-- PACKS -->
     <section class="sec sec-alt" id="packs" aria-labelledby="h-packs">
       <div class="wrap">
@@ -734,13 +696,6 @@
             <div class="faq-body">Las termas HotBoat funcionan con lluvia o frío — en esas condiciones son especialmente increíbles. Si el ski o moto de nieve no están disponibles por condiciones de la montaña, reprogramamos o ajustamos el pack sin costo adicional.</div>
           </details>
 
-          <details class="faq" data-a data-d="2">
-            <summary><span>¿Los traslados son desde Pucón centro?</span>
-              <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="faq-body">Sí. Coordinamos todos los traslados desde el alojamiento o desde un punto de encuentro en Pucón centro, según tu pack.</div>
-          </details>
-
           <details class="faq" data-a data-d="3">
             <summary><span>¿Hay límite de personas por pack?</span>
               <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -799,37 +754,5 @@
     }
   </script>
 
-  <!-- GALLERY CAROUSEL (mobile) -->
-  <script>
-    (function () {
-      var track = document.querySelector('.gallery');
-      var prev = document.getElementById('gal-prev');
-      var next = document.getElementById('gal-next');
-      var counter = document.getElementById('gal-counter');
-      if (!track || !prev || !next) return;
-      var items = Array.prototype.slice.call(track.querySelectorAll('.gal-item'));
-      var total = items.length;
-      var currentIdx = 0;
-      function goTo(idx) {
-        idx = Math.max(0, Math.min(idx, total - 1));
-        currentIdx = idx;
-        items[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        if (counter) counter.textContent = (currentIdx + 1) + ' / ' + total;
-      }
-      function syncCounter() {
-        var containerCenter = track.scrollLeft + track.offsetWidth / 2;
-        var closest = 0, closestDist = Infinity;
-        items.forEach(function (item, i) {
-          var dist = Math.abs((item.offsetLeft + item.offsetWidth / 2) - containerCenter);
-          if (dist < closestDist) { closestDist = dist; closest = i; }
-        });
-        currentIdx = closest;
-        if (counter) counter.textContent = (currentIdx + 1) + ' / ' + total;
-      }
-      next.addEventListener('click', function () { goTo(currentIdx + 1); });
-      prev.addEventListener('click', function () { goTo(currentIdx - 1); });
-      track.addEventListener('scroll', syncCounter);
-    })();
-  </script>
 </body>
 </html>

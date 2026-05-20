@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://hotboat.cl/packs">
+  <title>Packs HotBoat — Experiencias y Alojamiento en Pucón</title>
+  <meta name="description" content="Combiná tu estadía en Pucón con rafting, clases de ski y moto de nieve. Packs todo incluido con alojamiento. Reservá en HotBoat Chile.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0d6973">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="Packs HotBoat — Experiencias y Alojamiento en Pucón">
+  <meta property="og:description" content="Rafting, ski, moto de nieve y alojamiento. Todo armado, todo listo. Reservá tu pack HotBoat.">
+  <meta property="og:url" content="https://hotboat.cl/packs">
+  <meta property="og:image" content="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://hotboatchile.com/wp-content/uploads/cropped-Screenshot_3-32x32.jpg">
+  <link rel="preload" as="image" href="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sea: #0d6973;
+      --sea-deep: #0a4f56;
+      --sea-light: #e8f4f5;
+      --clay: #c56f2f;
+      --clay-soft: rgba(197,111,47,0.12);
+      --sand: #b79a6a;
+      --paper: #fffdf9;
+      --bone: #f6f2eb;
+      --ink: #14303a;
+      --muted: #5b6b70;
+      --line: rgba(183,154,106,0.28);
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Raleway', ui-sans-serif, system-ui, sans-serif;
+      --py: clamp(3rem,6vw,5rem);
+      --wrap: min(1140px, calc(100% - 2rem));
+      --sh: 0 8px 32px rgba(20,48,58,0.10);
+      --sh-sm: 0 2px 8px rgba(20,48,58,0.06);
+      --r: 20px;
+      --r-sm: 12px;
+      --r-pill: 999px;
+      --ease: cubic-bezier(0.25,0.1,0.25,1);
+      --t: 200ms;
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { margin:0; font-family:var(--sans); font-size:1rem; line-height:1.65; color:var(--ink); background:var(--bone); }
+    img { display:block; max-width:100%; }
+    a { color:var(--sea); text-underline-offset:3px; transition:color var(--t) var(--ease); }
+    a:hover { color:var(--sea-deep); }
+    h1,h2,h3 { font-family:var(--serif); line-height:1.15; margin:0; color:var(--ink); }
+    h1 { font-size:clamp(2rem,5vw,3rem); }
+    h2 { font-size:clamp(1.5rem,3.5vw,2rem); }
+    h3 { font-size:clamp(1.1rem,2.5vw,1.3rem); }
+    p { margin:0 0 1rem; }
+
+    .skip { position:absolute; left:-9999px; z-index:999; padding:.5rem 1rem; background:var(--paper); border-radius:8px; font-weight:600; color:var(--sea-deep); }
+    .skip:focus { left:1rem; top:1rem; }
+
+    .wrap { width:var(--wrap); margin-inline:auto; }
+
+    /* ---- BUTTONS ---- */
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+      min-height:48px; padding:.75rem 1.5rem; border-radius:var(--r-pill);
+      font-family:var(--sans); font-size:.95rem; font-weight:600; text-decoration:none;
+      cursor:pointer; border:none; white-space:nowrap;
+      transition:background var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .btn:hover { transform:translateY(-1px); }
+    .btn:active { transform:translateY(0); }
+    .btn-primary { background:var(--sea); color:#fff; box-shadow:0 4px 16px rgba(13,105,115,.35); }
+    .btn-primary:hover { background:var(--sea-deep); color:#fff; box-shadow:0 6px 24px rgba(13,105,115,.45); }
+    .btn-wa { background:#25d366; color:#fff; box-shadow:0 4px 16px rgba(37,211,102,.3); }
+    .btn-wa:hover { background:#1da851; color:#fff; }
+    .btn-ghost { background:rgba(255,255,255,.15); color:#fff; border:1.5px solid rgba(255,255,255,.35); }
+    .btn-ghost:hover { background:rgba(255,255,255,.25); color:#fff; }
+    .btn-outline { background:var(--paper); color:var(--sea-deep); border:1.5px solid rgba(13,105,115,.3); box-shadow:var(--sh-sm); }
+    .btn-outline:hover { border-color:var(--sea); box-shadow:var(--sh); color:var(--sea-deep); }
+
+    /* ---- NAV ---- */
+    .nav {
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,253,249,.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line); padding:.75rem 0;
+    }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; text-decoration:none; }
+    .brand img { height:60px; width:auto; display:block; }
+    .nav-links { display:flex; align-items:center; gap:.25rem; flex-wrap:wrap; }
+    .nav-links a {
+      font-size:.875rem; font-weight:500; text-decoration:none; padding:.5rem .75rem;
+      border-radius:var(--r-pill); color:var(--muted); min-height:44px;
+      display:inline-flex; align-items:center;
+      transition:color var(--t) var(--ease), background var(--t) var(--ease);
+    }
+    .nav-links a:hover { color:var(--sea-deep); background:var(--sea-light); }
+    .nav-links .btn-primary { min-height:40px; padding:.5rem 1.25rem; font-size:.875rem; color:#fff; }
+    .nav-links .btn-primary:hover { color:#fff; }
+
+    /* ---- HERO ---- */
+    .hero { position:relative; min-height:92vh; display:flex; align-items:center; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; z-index:0; }
+    .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; }
+    .hero-overlay {
+      position:absolute; inset:0; z-index:1;
+      background:linear-gradient(to right, rgba(10,20,24,.80) 0%, rgba(10,20,24,.55) 55%, rgba(10,20,24,.20) 100%);
+    }
+    .hero .wrap { display:flex; justify-content:flex-start; }
+    .hero-content { position:relative; z-index:2; color:#fff; max-width:560px; padding:var(--py) 0; }
+    .hero-content h1 { color:#fff; font-size:clamp(2rem,5.5vw,3.1rem); margin-bottom:1rem; text-shadow:0 2px 12px rgba(0,0,0,.2); }
+    .hero-sub { font-size:clamp(.95rem,2vw,1.1rem); color:rgba(255,253,249,.88); margin-bottom:1.5rem; max-width:46ch; }
+    .badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; }
+    .badge {
+      display:inline-flex; align-items:center; gap:.35rem;
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+      color:rgba(255,253,249,.95); padding:.4rem .85rem; border-radius:var(--r-pill);
+      font-size:.83rem; font-weight:500; backdrop-filter:blur(4px);
+    }
+    .ctas { display:flex; flex-wrap:wrap; gap:.75rem; }
+
+    /* ---- PILL LABEL ---- */
+    .label {
+      display:inline-block; background:var(--clay-soft); color:var(--clay);
+      font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      padding:.35rem .85rem; border-radius:var(--r-pill); margin-bottom:.85rem;
+    }
+
+    /* ---- SECTIONS ---- */
+    .sec { padding:var(--py) 0; }
+    .sec-alt { background:var(--paper); }
+    .sec-head { text-align:center; margin-bottom:2.5rem; }
+    .sec-head h2 { margin-bottom:.5rem; }
+    .sec-head p { color:var(--muted); max-width:52ch; margin-inline:auto; margin-bottom:0; }
+    .divider { height:1px; background:var(--line); }
+
+    /* ---- FEATURES ---- */
+    .feat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.25rem; }
+    .feat-card {
+      background:var(--paper); border:1px solid var(--line); border-radius:var(--r);
+      padding:1.5rem; display:flex; gap:1rem; align-items:flex-start;
+      transition:box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+    }
+    .feat-card:hover { box-shadow:var(--sh); transform:translateY(-2px); }
+    .feat-icon {
+      flex-shrink:0; width:44px; height:44px; background:var(--sea-light);
+      border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; color:var(--sea);
+    }
+    .feat-icon svg { width:22px; height:22px; stroke:currentColor; stroke-width:1.75; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .feat-text strong { display:block; font-weight:600; color:var(--ink); margin-bottom:.2rem; font-size:.95rem; }
+    .feat-text span { font-size:.875rem; color:var(--muted); line-height:1.5; }
+
+    /* ---- PRICE CARDS GRID ---- */
+    .packs-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+      gap:1.5rem;
+      align-items:start;
+    }
+    .price-card {
+      background:linear-gradient(135deg, var(--sea), var(--sea-deep));
+      color:#fff; border-radius:var(--r); padding:clamp(2rem,5vw,2.5rem);
+      text-align:center; box-shadow:0 12px 48px rgba(13,105,115,.35);
+      position:relative;
+    }
+    .price-card h3 { color:#fff; margin-bottom:.5rem; font-size:clamp(1.1rem,2vw,1.35rem); }
+    .price-card-muted {
+      background:var(--paper); border:1px solid var(--line);
+      box-shadow:var(--sh-sm);
+    }
+    .price-card-muted h3 { color:var(--ink); }
+    .price-from { opacity:.8; font-size:.9rem; margin-bottom:.2rem; }
+    .price-card-muted .price-from { opacity:1; color:var(--muted); }
+    .price-val { font-family:var(--serif); font-size:clamp(2.2rem,5vw,3rem); font-weight:700; line-height:1; margin-bottom:.3rem; }
+    .price-card-muted .price-val { color:var(--sea-deep); }
+    .price-sub { opacity:.8; font-size:.875rem; margin-bottom:1.5rem; }
+    .price-card-muted .price-sub { opacity:1; color:var(--muted); }
+    .price-list { list-style:none; padding:0; margin:0 0 1.75rem; text-align:left; display:grid; gap:.6rem; }
+    .price-list li { display:flex; align-items:center; gap:.6rem; font-size:.875rem; opacity:.92; }
+    .price-list li svg { flex-shrink:0; width:18px; height:18px; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; fill:none; }
+    .price-card .price-list li svg { stroke:#fff; }
+    .price-card-muted .price-list li { color:var(--ink); opacity:1; }
+    .price-card-muted .price-list li svg { stroke:var(--sea); }
+    .pack-tag {
+      position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+      background:var(--clay); color:#fff; padding:.35rem 1.1rem;
+      border-radius:0 0 var(--r-pill) var(--r-pill);
+      font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .price-card-tagline {
+      font-size:.85rem; margin-bottom:1.25rem;
+    }
+    .price-card .price-card-tagline { opacity:.78; }
+    .price-card-muted .price-card-tagline { color:var(--muted); }
+
+    /* ---- ACTIVITY CARDS ---- */
+    .act-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(290px, 1fr)); gap:1.25rem; }
+    .act-card {
+      background:var(--paper); border:1px solid var(--line); border-radius:var(--r);
+      overflow:hidden; box-shadow:var(--sh-sm);
+      transition:box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+      display:flex; flex-direction:column;
+    }
+    .act-card:hover { box-shadow:var(--sh); transform:translateY(-2px); }
+    .act-img { position:relative; overflow:hidden; aspect-ratio:4/3; }
+    .act-img img { width:100%; height:100%; object-fit:cover; transition:transform 400ms var(--ease); }
+    .act-card:hover .act-img img { transform:scale(1.04); }
+    .act-img-overlay {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(to top, rgba(10,20,24,.75) 0%, transparent 100%);
+      padding:.85rem 1.1rem .75rem;
+      display:flex; align-items:center; justify-content:space-between; gap:.5rem;
+    }
+    .act-badge {
+      background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3);
+      color:#fff; padding:.3rem .75rem; border-radius:var(--r-pill);
+      font-size:.75rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      backdrop-filter:blur(4px);
+    }
+    .act-duration {
+      display:flex; align-items:center; gap:.3rem;
+      color:rgba(255,255,255,.88); font-size:.78rem; font-weight:500;
+    }
+    .act-duration svg { width:13px; height:13px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .act-body { padding:1.25rem; flex:1; }
+    .act-body h3 { margin-bottom:.4rem; }
+    .act-body p { color:var(--muted); font-size:.875rem; margin:0; }
+    @media (max-width:900px) { .act-grid { grid-template-columns:1fr 1fr; } }
+    @media (max-width:560px) { .act-grid { grid-template-columns:1fr; } }
+
+    /* ---- GALLERY ---- */
+    .gallery { display:grid; grid-template-columns:repeat(12,1fr); gap:.85rem; }
+    .gal-item { border-radius:var(--r-sm); overflow:hidden; background:var(--sea-light); }
+    .gal-item:nth-child(1) { grid-column:span 7; }
+    .gal-item:nth-child(2) { grid-column:span 5; }
+    .gal-item:nth-child(3) { grid-column:span 4; }
+    .gal-item:nth-child(4) { grid-column:span 4; }
+    .gal-item:nth-child(5) { grid-column:span 4; }
+    .gal-item img { width:100%; height:100%; object-fit:cover; aspect-ratio:4/3; transition:transform 400ms var(--ease); }
+    .gal-item:hover img { transform:scale(1.04); }
+    .gal-nav { display:none; }
+    @media (max-width:768px) {
+      .gallery {
+        display:flex; gap:.75rem;
+        overflow-x:auto; scroll-snap-type:x mandatory;
+        scrollbar-width:none; -ms-overflow-style:none;
+        padding-bottom:.5rem; cursor:grab;
+      }
+      .gallery::-webkit-scrollbar { display:none; }
+      .gallery:active { cursor:grabbing; }
+      .gal-item {
+        flex:0 0 85vw; scroll-snap-align:center; border-radius:var(--r);
+      }
+      .gal-item:nth-child(n) { grid-column:unset; }
+      .gal-item img { aspect-ratio:4/3; }
+      .gal-nav {
+        display:flex; align-items:center; justify-content:center;
+        gap:1rem; margin-top:1rem;
+      }
+    }
+    .carousel-btn {
+      width:40px; height:40px; border-radius:50%; border:1.5px solid var(--line);
+      background:var(--paper); color:var(--sea-deep); cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background var(--t) var(--ease), border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+      flex-shrink:0;
+    }
+    .carousel-btn:hover { background:var(--sea-light); border-color:var(--sea); box-shadow:var(--sh-sm); }
+    .carousel-btn svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+
+    /* ---- FAQ ---- */
+    .faq-list { display:grid; gap:.75rem; max-width:720px; margin-inline:auto; }
+    details.faq {
+      background:var(--paper); border:1px solid var(--line);
+      border-radius:var(--r-sm); overflow:hidden;
+      transition:box-shadow var(--t) var(--ease);
+    }
+    details.faq[open] { box-shadow:var(--sh-sm); }
+    details.faq summary {
+      cursor:pointer; list-style:none; padding:1.1rem 1.25rem;
+      font-weight:600; font-size:.97rem; color:var(--ink);
+      display:flex; align-items:center; justify-content:space-between; gap:1rem;
+      min-height:52px; transition:background var(--t) var(--ease);
+    }
+    details.faq summary:hover { background:var(--bone); }
+    details.faq summary::-webkit-details-marker { display:none; }
+    .faq-chev { flex-shrink:0; width:20px; height:20px; color:var(--sea); transition:transform var(--t) var(--ease); stroke:currentColor; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+    details.faq[open] .faq-chev { transform:rotate(180deg); }
+    .faq-body { padding:0 1.25rem 1.1rem; color:var(--muted); font-size:.93rem; line-height:1.65; }
+    .faq-body strong { color:var(--ink); }
+
+    /* ---- FINAL CTA ---- */
+    .cta-sec {
+      text-align:center; padding:var(--py) 0;
+      background:linear-gradient(135deg, var(--sea), var(--sea-deep));
+      color:#fff;
+    }
+    .cta-sec h2 { color:#fff; margin-bottom:1rem; font-size:clamp(1.75rem,4vw,2.5rem); }
+    .cta-sec p { color:rgba(255,253,249,.85); margin-bottom:2rem; max-width:46ch; margin-inline:auto; font-size:1.05rem; }
+
+    /* ---- FOOTER ---- */
+    footer { background:var(--ink); color:rgba(255,253,249,.6); padding:2rem 0; text-align:center; font-size:.875rem; }
+    footer a { color:rgba(255,253,249,.8); }
+    footer a:hover { color:#fff; }
+
+    /* ---- STICKY MOBILE ---- */
+    .sticky { display:none; }
+
+    /* ---- ANIMATIONS ---- */
+    .js [data-a] { opacity:0; transform:translateY(24px); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width:768px) {
+      .nav-links a:not(.btn-primary) { display:none; }
+      .hero .wrap { justify-content:flex-start; }
+      .hero-content { max-width:100%; }
+      .hero .ctas { justify-content:flex-end; }
+      .sticky {
+        display:flex; position:fixed; bottom:0; left:0; right:0;
+        padding:.75rem 1rem; background:rgba(255,253,249,.96);
+        border-top:1px solid var(--line); box-shadow:0 -8px 28px rgba(20,48,58,.1);
+        z-index:40; gap:.75rem;
+      }
+      .sticky a { flex:1; text-align:center; font-size:.875rem; padding:.75rem .5rem; min-height:48px; }
+      .packs-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:480px) {
+      .feat-grid { grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+      .js [data-a] { opacity:1 !important; transform:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Saltar al contenido principal</a>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="wrap nav-inner">
+        <a class="brand" href="https://hotboat.cl" aria-label="HotBoat Chile">
+          <img src="https://hotboatchile.com/wp-content/uploads/Logo-sin-Fondo-y-sin-CHILE-1.png" alt="HotBoat Chile" height="60" width="auto" loading="eager">
+        </a>
+        <div class="nav-links">
+          <a href="#actividades">Actividades</a>
+          <a href="#alojamiento">Alojamiento</a>
+          <a href="#packs">Packs</a>
+          <a href="https://hotboat.cl">Termas</a>
+          <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Reservar</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Packs HotBoat — Pucón completo">
+      <div class="hero-bg" aria-hidden="true">
+        <img
+          src="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp"
+          alt=""
+          width="1600" height="900"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero-content">
+          <h1>Pucón completo, sin nada que organizar</h1>
+          <p class="hero-sub">Rafting, ski, moto de nieve y alojamiento. Todo armado para que solo llegues y disfrutes.</p>
+          <div class="badges" aria-label="Qué incluye">
+            <span class="badge">Termas navegables HotBoat</span>
+            <span class="badge">Rafting en el Trancura</span>
+            <span class="badge">Ski en el Villarrica</span>
+            <span class="badge">Moto de nieve</span>
+            <span class="badge">Alojamiento incluido</span>
+          </div>
+          <div class="ctas">
+            <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Ver disponibilidad
+            </a>
+            <a class="btn btn-wa" href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDADES -->
+    <section class="sec" id="actividades" aria-labelledby="h-actividades">
+      <div class="wrap">
+        <div class="sec-head" data-a>
+          <span class="label">Actividades</span>
+          <h2 id="h-actividades">Las experiencias que puedes combinar</h2>
+          <p>Cada actividad es guiada y con equipo incluido. Solo tienes que aparecer.</p>
+        </div>
+        <div class="act-grid">
+
+          <!-- Reemplazar src con foto de HotBoat -->
+          <div class="act-card" data-a data-d="1">
+            <div class="act-img">
+              <img src="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp" alt="Termas navegables HotBoat en Laguna Rivera, Pucón" width="800" height="600" loading="lazy" decoding="async">
+              <div class="act-img-overlay">
+                <span class="act-badge">Privado</span>
+                <span class="act-duration">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  2 horas
+                </span>
+              </div>
+            </div>
+            <div class="act-body">
+              <h3>Termas navegables HotBoat</h3>
+              <p>Agua termal caliente en Laguna Rivera, con motor eléctrico, música Bluetooth, picoteo y video con dron. Exclusivo para tu grupo.</p>
+            </div>
+          </div>
+
+          <!-- Reemplazar src con foto de rafting -->
+          <div class="act-card" data-a data-d="2">
+            <div class="act-img">
+              <img src="https://hotboatchile.com/wp-content/uploads/IMG_3065.webp" alt="Rafting en el río Trancura, Pucón" width="800" height="600" loading="lazy" decoding="async">
+              <div class="act-img-overlay">
+                <span class="act-badge">Aventura</span>
+                <span class="act-duration">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  3 – 4 horas
+                </span>
+              </div>
+            </div>
+            <div class="act-body">
+              <h3>Rafting en el río Trancura</h3>
+              <p>Rápidos de nivel II y III con guías certificados. Equipo completo y traslado desde Pucón incluidos.</p>
+            </div>
+          </div>
+
+          <!-- Reemplazar src con foto de ski -->
+          <div class="act-card" data-a data-d="3">
+            <div class="act-img">
+              <img src="https://hotboatchile.com/wp-content/uploads/IMG_3066.webp" alt="Clases de ski en el volcán Villarrica, Pucón" width="800" height="600" loading="lazy" decoding="async">
+              <div class="act-img-overlay">
+                <span class="act-badge">Invierno</span>
+                <span class="act-duration">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Medio día
+                </span>
+              </div>
+            </div>
+            <div class="act-body">
+              <h3>Clases de ski — Volcán Villarrica</h3>
+              <p>Instructores certificados para todos los niveles. Forfait y arriendo de equipo incluidos.</p>
+            </div>
+          </div>
+
+          <!-- Reemplazar src con foto de moto de nieve -->
+          <div class="act-card" data-a data-d="1">
+            <div class="act-img">
+              <img src="https://hotboatchile.com/wp-content/uploads/IMG_3069.webp" alt="Paseo en moto de nieve en el volcán Villarrica, Pucón" width="800" height="600" loading="lazy" decoding="async">
+              <div class="act-img-overlay">
+                <span class="act-badge">Exclusivo</span>
+                <span class="act-duration">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  2 horas
+                </span>
+              </div>
+            </div>
+            <div class="act-body">
+              <h3>Paseo en moto de nieve</h3>
+              <p>Recorrido por las laderas nevadas del volcán con guía experto. Vistas panorámicas únicas.</p>
+            </div>
+          </div>
+
+          <!-- Reemplazar src con foto de arriendo de vehículos -->
+          <div class="act-card" data-a data-d="2">
+            <div class="act-img">
+              <img src="https://hotboatchile.com/wp-content/uploads/IMG_5325.webp" alt="Arriendo de vehículos en Pucón" width="800" height="600" loading="lazy" decoding="async" style="object-position:center 60%;">
+              <div class="act-img-overlay">
+                <span class="act-badge">Movilidad</span>
+                <span class="act-duration">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Por día
+                </span>
+              </div>
+            </div>
+            <div class="act-body">
+              <h3>Arriendo de vehículos</h3>
+              <p>4x4, camionetas o autos para moverse por Pucón y la zona a tu ritmo. Coordinamos la entrega en el alojamiento.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ALOJAMIENTO -->
+    <section class="sec sec-alt" id="alojamiento" aria-labelledby="h-alojamiento">
+      <div class="wrap">
+        <div class="sec-head" data-a>
+          <span class="label">Alojamiento</span>
+          <h2 id="h-alojamiento">Dónde te vas a quedar</h2>
+          <p>Elige el tipo de alojamiento que mejor se adapta a tu grupo — todo coordinado por nosotros.</p>
+        </div>
+        <div class="feat-grid">
+
+          <div class="feat-card" data-a data-d="1">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="feat-text">
+              <strong>Cabaña privada</strong>
+              <span>Para 2 a 4 personas. Cocina equipada, calefacción y vista al volcán Villarrica.</span>
+            </div>
+          </div>
+
+          <div class="feat-card" data-a data-d="2">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/><path d="M10 4H4v6h6V4z"/><path d="M20 4h-6v6h6V4z"/><path d="M20 14h-6v6h6v-6z"/><path d="M10 14H4v6h6v-6z"/></svg>
+            </div>
+            <div class="feat-text">
+              <strong>Casa para grupos</strong>
+              <span>Hasta 8 personas. Living amplio, múltiples habitaciones y parrilla exterior.</span>
+            </div>
+          </div>
+
+          <div class="feat-card" data-a data-d="3">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="feat-text">
+              <strong>Todo coordinado</strong>
+              <span>Check-in, check-out y cronograma de actividades armado de antemano. Sin sorpresas.</span>
+            </div>
+          </div>
+
+          <div class="feat-card" data-a data-d="1">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div class="feat-text">
+              <strong>Flexible en noches</strong>
+              <span>Packs desde 2 hasta 4 noches. Más tiempo = más actividades a mejor precio.</span>
+            </div>
+          </div>
+
+          <div class="feat-card" data-a data-d="2">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="feat-text">
+              <strong>Pucón centro a 15 min</strong>
+              <span>Cerca de restaurantes, comercio y la laguna. Traslados a todas las actividades incluidos.</span>
+            </div>
+          </div>
+
+          <div class="feat-card" data-a data-d="3">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+            </div>
+            <div class="feat-text">
+              <strong>Termas HotBoat incluidas</strong>
+              <span>Todos los packs incluyen la experiencia termal navegable en Laguna Rivera.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- GALERÍA -->
+    <section class="sec" id="fotos" aria-labelledby="h-fotos">
+      <div class="wrap">
+        <div class="sec-head" data-a>
+          <span class="label">Fotos</span>
+          <h2 id="h-fotos">El lugar donde vas a estar</h2>
+        </div>
+        <div class="gallery" data-a>
+          <figure class="gal-item">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3070.webp" alt="Vista de Laguna Rivera desde las termas navegables HotBoat en Pucón" width="800" height="600" loading="lazy" decoding="async">
+          </figure>
+          <figure class="gal-item">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3069.webp" alt="Termas navegables HotBoat Chile navegando en Laguna Rivera" width="800" height="600" loading="lazy" decoding="async">
+          </figure>
+          <figure class="gal-item">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3066.webp" alt="Experiencia privada HotBoat rodeada de naturaleza en Pucón" width="800" height="600" loading="lazy" decoding="async">
+          </figure>
+          <figure class="gal-item">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_3065.webp" alt="Paisaje volcánico y Laguna Rivera desde las termas navegables HotBoat" width="800" height="600" loading="lazy" decoding="async">
+          </figure>
+          <figure class="gal-item">
+            <img src="https://hotboatchile.com/wp-content/uploads/IMG_5325.webp" alt="Atardecer en las termas navegables HotBoat Chile, Pucón" width="800" height="600" loading="lazy" decoding="async" style="object-position:center 60%;">
+          </figure>
+        </div>
+        <div class="gal-nav" aria-label="Controles galería">
+          <button class="carousel-btn" id="gal-prev" aria-label="Foto anterior">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span id="gal-counter" style="font-size:.85rem;color:var(--muted);min-width:3rem;text-align:center;">1 / 5</span>
+          <button class="carousel-btn" id="gal-next" aria-label="Siguiente foto">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PACKS -->
+    <section class="sec sec-alt" id="packs" aria-labelledby="h-packs">
+      <div class="wrap">
+        <div class="sec-head" data-a>
+          <span class="label">Packs todo incluido</span>
+          <h2 id="h-packs">Elegí tu combinación</h2>
+          <p>Todos los packs incluyen alojamiento, traslados y las termas HotBoat. Lo único que cambián son las actividades.</p>
+        </div>
+
+        <div class="packs-grid">
+
+          <!-- Pack Clásico -->
+          <div class="price-card price-card-muted" data-a data-d="1">
+            <span class="label" style="margin-bottom:1rem;">Pack Clásico</span>
+            <h3>Termas + Rafting</h3>
+            <p class="price-card-tagline">El dúo perfecto. Agua caliente de día, adrenalina en el río.</p>
+            <p class="price-from">desde</p>
+            <p class="price-val">Consultar</p>
+            <p class="price-sub">Para tu grupo · 2 noches</p>
+            <ul class="price-list" aria-label="Qué incluye">
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 2 noches en cabaña privada</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Termas navegables HotBoat</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Rafting en el río Trancura</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Traslados incluidos</li>
+            </ul>
+            <div class="ctas" style="justify-content:center;">
+              <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Ver disponibilidad</a>
+            </div>
+          </div>
+
+          <!-- Pack Aventura — destacado -->
+          <div class="price-card" style="margin-top:-1rem;" data-a data-d="2">
+            <div class="pack-tag">Más elegido</div>
+            <span class="label" style="background:rgba(255,255,255,.15);color:#fff;margin-bottom:1rem;">Pack Aventura</span>
+            <h3>Termas + Ski + Rafting</h3>
+            <p class="price-card-tagline">Todo lo que Pucón ofrece en una sola estadía.</p>
+            <p class="price-from">desde</p>
+            <p class="price-val">Consultar</p>
+            <p class="price-sub">Para tu grupo · 3 noches</p>
+            <ul class="price-list" aria-label="Qué incluye">
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 3 noches en cabaña o casa</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Termas navegables HotBoat</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Clases de ski + forfait incluido</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Rafting en el río Trancura</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Todos los traslados</li>
+            </ul>
+            <div class="ctas" style="justify-content:center;">
+              <a class="btn" style="background:#fff;color:var(--sea-deep);box-shadow:0 4px 16px rgba(0,0,0,.15);" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Ver disponibilidad</a>
+            </div>
+          </div>
+
+          <!-- Pack Nieve completo -->
+          <div class="price-card price-card-muted" data-a data-d="3">
+            <span class="label" style="margin-bottom:1rem;">Pack Nieve Completo</span>
+            <h3>Todo incluido</h3>
+            <p class="price-card-tagline">Termas, ski, rafting y moto de nieve. Sin dejar nada afuera.</p>
+            <p class="price-from">desde</p>
+            <p class="price-val">Consultar</p>
+            <p class="price-sub">Para tu grupo · 4 noches</p>
+            <ul class="price-list" aria-label="Qué incluye">
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 4 noches en casa para grupos</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Termas navegables HotBoat</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Clases de ski + forfait</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Rafting en el Trancura</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Paseo en moto de nieve</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Todos los traslados</li>
+            </ul>
+            <div class="ctas" style="justify-content:center;">
+              <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Ver disponibilidad</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FAQ -->
+    <section class="sec" id="faq" aria-labelledby="h-faq">
+      <div class="wrap">
+        <div class="sec-head" data-a>
+          <span class="label">FAQ</span>
+          <h2 id="h-faq">Preguntas frecuentes</h2>
+          <p>Todo lo que necesitas saber antes de reservar tu pack.</p>
+        </div>
+        <div class="faq-list">
+
+          <details class="faq" data-a data-d="1">
+            <summary><span>¿Los packs están disponibles todo el año?</span>
+              <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-body">Las termas HotBoat operan <strong>todo el año</strong>. El ski y la moto de nieve están disponibles en temporada de nieve (junio a septiembre). El rafting en el Trancura funciona casi todo el año dependiendo del caudal.</div>
+          </details>
+
+          <details class="faq" data-a data-d="2">
+            <summary><span>¿Cómo reservo un pack?</span>
+              <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-body">Desde el botón <strong>"Ver disponibilidad"</strong> para elegir fecha y configurar tu pack online, o escribiéndonos por <strong>WhatsApp al +56 9 7578 0920</strong> para armar algo personalizado.</div>
+          </details>
+
+          <details class="faq" data-a data-d="3">
+            <summary><span>¿Puedo personalizar el pack?</span>
+              <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-body">Sí. Los packs son una guía, pero puedes agregar o quitar actividades, cambiar el tipo de alojamiento o ajustar la cantidad de noches. Escríbenos por WhatsApp y lo organizamos a medida.</div>
+          </details>
+
+          <details class="faq" data-a data-d="1">
+            <summary><span>¿Qué pasa si llueve o cancela el ski?</span>
+              <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-body">Las termas HotBoat funcionan con lluvia o frío — en esas condiciones son especialmente increíbles. Si el ski o moto de nieve no están disponibles por condiciones de la montaña, reprogramamos o ajustamos el pack sin costo adicional.</div>
+          </details>
+
+          <details class="faq" data-a data-d="2">
+            <summary><span>¿Los traslados son desde Pucón centro?</span>
+              <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-body">Sí. Coordinamos todos los traslados desde el alojamiento o desde un punto de encuentro en Pucón centro, según tu pack.</div>
+          </details>
+
+          <details class="faq" data-a data-d="3">
+            <summary><span>¿Hay límite de personas por pack?</span>
+              <svg class="faq-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-body">Las termas HotBoat son para grupos de <strong>2 a 7 personas</strong>. Para grupos más grandes, coordinamos varias salidas. El alojamiento en casa para grupos acepta hasta 8 personas. Consúltanos por WhatsApp si sois más.</div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-sec" aria-labelledby="h-final">
+      <div class="wrap">
+        <h2 id="h-final">¿Listo para vivir Pucón completo?</h2>
+        <p>Reservá tu pack y viví algo que no existe en ningún otro lugar de Chile.</p>
+        <div class="ctas" style="justify-content:center;">
+          <a class="btn" style="background:#fff;color:var(--sea-deep);font-size:1rem;padding:.9rem 2rem;box-shadow:0 4px 20px rgba(0,0,0,.15);" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Ver disponibilidad</a>
+          <a class="btn btn-wa" href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>
+        <a href="https://instagram.com/hotboat_chile" rel="noopener noreferrer" target="_blank">@hotboat_chile</a>
+        · <a href="https://hotboat.cl/" rel="noopener">hotboat.cl</a>
+        · <a href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank">+56 9 7578 0920</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE -->
+  <nav class="sticky" aria-label="Reserva rápida">
+    <a class="btn btn-wa" href="https://wa.me/56975780920" rel="noopener noreferrer" target="_blank">WhatsApp</a>
+    <a class="btn btn-primary" href="https://whatsapp.hotboat.cl/booking" rel="noopener">Reservar ahora</a>
+  </nav>
+
+  <!-- MOTION ANIMATIONS -->
+  <script type="module">
+    import { animate, inView } from 'https://cdn.jsdelivr.net/npm/motion@12.38.0/+esm';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.add('js');
+    if (!reduced) {
+      document.querySelectorAll('[data-a]').forEach(el => {
+        const delay = parseFloat(el.dataset.d || 0) * 0.1;
+        inView(el, () => {
+          animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.5, delay, easing: [0.25, 0.1, 0.25, 1] });
+        }, { margin: '-5% 0px' });
+      });
+    }
+  </script>
+
+  <!-- GALLERY CAROUSEL (mobile) -->
+  <script>
+    (function () {
+      var track = document.querySelector('.gallery');
+      var prev = document.getElementById('gal-prev');
+      var next = document.getElementById('gal-next');
+      var counter = document.getElementById('gal-counter');
+      if (!track || !prev || !next) return;
+      var items = Array.prototype.slice.call(track.querySelectorAll('.gal-item'));
+      var total = items.length;
+      var currentIdx = 0;
+      function goTo(idx) {
+        idx = Math.max(0, Math.min(idx, total - 1));
+        currentIdx = idx;
+        items[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        if (counter) counter.textContent = (currentIdx + 1) + ' / ' + total;
+      }
+      function syncCounter() {
+        var containerCenter = track.scrollLeft + track.offsetWidth / 2;
+        var closest = 0, closestDist = Infinity;
+        items.forEach(function (item, i) {
+          var dist = Math.abs((item.offsetLeft + item.offsetWidth / 2) - containerCenter);
+          if (dist < closestDist) { closestDist = dist; closest = i; }
+        });
+        currentIdx = closest;
+        if (counter) counter.textContent = (currentIdx + 1) + ' / ' + total;
+      }
+      next.addEventListener('click', function () { goTo(currentIdx + 1); });
+      prev.addEventListener('click', function () { goTo(currentIdx - 1); });
+      track.addEventListener('scroll', syncCounter);
+    })();
+  </script>
+</body>
+</html>

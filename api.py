@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Optional
 
 import pytz
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -18,6 +18,7 @@ from meta_pixel import (
 
 _ROOT_DIR = Path(__file__).resolve().parent
 _INDEX_PATH = _ROOT_DIR / "index.html"
+_PACKS_PATH = _ROOT_DIR / "packs.html"
 _META_PIXEL_ID = get_meta_pixel_id()
 print(meta_pixel_startup_message(), flush=True)
 
@@ -218,14 +219,30 @@ def _serve_index() -> HTMLResponse:
     return HTMLResponse(content=body, media_type="text/html; charset=utf-8")
 
 
+def _serve_packs() -> HTMLResponse:
+    raw = _PACKS_PATH.read_text(encoding="utf-8")
+    body = apply_meta_pixel_placeholder(raw, _META_PIXEL_ID)
+    return HTMLResponse(content=body, media_type="text/html; charset=utf-8")
+
+
 @app.get("/")
-def landing_root():
+def landing_root(request: Request):
+    host = request.headers.get("host", "")
+    if host.startswith("packs."):
+        return _serve_packs()
     return _serve_index()
 
 
 @app.get("/index.html")
 def landing_index():
     return _serve_index()
+
+
+@app.get("/packs")
+@app.get("/packs/")
+@app.get("/packs.html")
+def landing_packs():
+    return _serve_packs()
 
 
 @app.get("/pr")

@@ -13,12 +13,40 @@
     }
   } catch (e) { _sid = Math.random().toString(36).slice(2); }
 
+  // --- Visitante persistente (entre visitas, no solo por pestaña) ---
+  var _uid;
+  try {
+    _uid = localStorage.getItem('hb_uid');
+    if (!_uid) {
+      _uid = (typeof crypto !== 'undefined' && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem('hb_uid', _uid);
+    }
+  } catch (e) { _uid = _sid; }
+
   // --- Visitante nuevo vs recurrente ---
   var _returning;
   try {
     _returning = !!localStorage.getItem('hb_visited');
     localStorage.setItem('hb_visited', '1');
   } catch (e) { _returning = false; }
+
+  // --- Atribución de anuncio: se captura al llegar y sobrevive toda la sesión ---
+  var AD_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'fbclid', 'gclid'];
+  var _adParams = {};
+  try {
+    var _qs = new URLSearchParams(window.location.search);
+    var _storedAd = JSON.parse(sessionStorage.getItem('hb_ad') || '{}');
+    AD_PARAMS.forEach(function (key) {
+      var v = _qs.get(key);
+      if (v) _storedAd[key] = v.slice(0, 200);
+    });
+    if (Object.keys(_storedAd).length) {
+      sessionStorage.setItem('hb_ad', JSON.stringify(_storedAd));
+    }
+    _adParams = _storedAd;
+  } catch (e) {}
 
   // --- Función central de envío ---
   function _send(event, extra) {
@@ -27,6 +55,7 @@
         event:        event,
         extra:        extra || null,
         session_id:   _sid,
+        visitor_id:   _uid,
         is_returning: _returning,
         lang:         document.documentElement.lang || 'es-CL',
         referrer:     (document.referrer || '').substring(0, 200),
@@ -42,6 +71,25 @@
 
   // --- Visita inicial ---
   _send('page_visit');
+
+  // --- Reenviar sid + atribución de anuncio hacia el link de reserva ---
+  // (el booking en whatsapp.hotboat.cl ya sabe leer utm_*/fbclid de su propia URL;
+  // solo falta que se los mandemos cuando el usuario entra primero por la landing)
+  try {
+    document.querySelectorAll('a[href]').forEach(function (el) {
+      var href = el.getAttribute('href') || '';
+      if (href.indexOf('whatsapp.hotboat') === -1 && href.indexOf('/booking') === -1) return;
+      try {
+        var url = new URL(href, window.location.href);
+        url.searchParams.set('sid', _sid);
+        url.searchParams.set('vid', _uid);
+        Object.keys(_adParams).forEach(function (key) {
+          if (!url.searchParams.get(key)) url.searchParams.set(key, _adParams[key]);
+        });
+        el.setAttribute('href', url.toString());
+      } catch (e) {}
+    });
+  } catch (e) {}
 
   // --- Vistas de sección (cada una se dispara una sola vez) ---
   var SECTIONS = ['incluye', 'precio', 'resenas', 'fotos', 'faq', 'ubicacion'];

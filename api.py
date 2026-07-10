@@ -52,6 +52,7 @@ if USE_PG:
                     CREATE TABLE IF NOT EXISTS booking_visitor_events (
                         id           SERIAL PRIMARY KEY,
                         session_id   VARCHAR(64)  NOT NULL,
+                        visitor_id   VARCHAR(64),
                         event_type   VARCHAR(96)  NOT NULL,
                         extra_date   TEXT,
                         time_label   VARCHAR(16),
@@ -61,18 +62,20 @@ if USE_PG:
                         recorded_at  TIMESTAMPTZ  DEFAULT NOW()
                     )
                 """)
+                cur.execute("ALTER TABLE booking_visitor_events ADD COLUMN IF NOT EXISTS visitor_id VARCHAR(64)")
                 cur.execute("CREATE INDEX IF NOT EXISTS idx_bve_sid ON booking_visitor_events(session_id)")
+                cur.execute("CREATE INDEX IF NOT EXISTS idx_bve_vid ON booking_visitor_events(visitor_id)")
                 cur.execute("CREATE INDEX IF NOT EXISTS idx_bve_ts  ON booking_visitor_events(recorded_at)")
             conn.commit()
 
-    def _insert(sid, event, extra, lang, referrer, returning, now, time_label):
+    def _insert(sid, event, extra, lang, referrer, returning, now, time_label, vid=None):
         with _get_conn() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """INSERT INTO booking_visitor_events
-                       (session_id, event_type, extra_date, time_label, lang, referrer, is_returning, recorded_at)
-                       VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""",
-                    (sid, event, extra, time_label, lang, referrer, returning, now),
+                       (session_id, visitor_id, event_type, extra_date, time_label, lang, referrer, is_returning, recorded_at)
+                       VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                    (sid, vid, event, extra, time_label, lang, referrer, returning, now),
                 )
             conn.commit()
 
@@ -92,6 +95,7 @@ else:
                 CREATE TABLE IF NOT EXISTS booking_visitor_events (
                     id           INTEGER PRIMARY KEY AUTOINCREMENT,
                     session_id   TEXT    NOT NULL,
+                    visitor_id   TEXT,
                     event_type   TEXT    NOT NULL,
                     extra_date   TEXT,
                     time_label   TEXT,
@@ -101,17 +105,21 @@ else:
                     recorded_at  TEXT    NOT NULL
                 )
             """)
+            existing_cols = {row[1] for row in c.execute("PRAGMA table_info(booking_visitor_events)")}
+            if "visitor_id" not in existing_cols:
+                c.execute("ALTER TABLE booking_visitor_events ADD COLUMN visitor_id TEXT")
             c.execute("CREATE INDEX IF NOT EXISTS idx_bve_sid ON booking_visitor_events(session_id)")
+            c.execute("CREATE INDEX IF NOT EXISTS idx_bve_vid ON booking_visitor_events(visitor_id)")
             c.execute("CREATE INDEX IF NOT EXISTS idx_bve_ts  ON booking_visitor_events(recorded_at)")
             c.commit()
 
-    def _insert(sid, event, extra, lang, referrer, returning, now, time_label):
+    def _insert(sid, event, extra, lang, referrer, returning, now, time_label, vid=None):
         with sqlite3.connect(DB_PATH) as c:
             c.execute(
                 """INSERT INTO booking_visitor_events
-                   (session_id, event_type, extra_date, time_label, lang, referrer, is_returning, recorded_at)
-                   VALUES (?,?,?,?,?,?,?,?)""",
-                (sid, event, extra, time_label, lang, referrer, int(returning), now),
+                   (session_id, visitor_id, event_type, extra_date, time_label, lang, referrer, is_returning, recorded_at)
+                   VALUES (?,?,?,?,?,?,?,?,?)""",
+                (sid, vid, event, extra, time_label, lang, referrer, int(returning), now),
             )
             c.commit()
 
@@ -126,6 +134,7 @@ print(f"[DB] Using {'PostgreSQL' if USE_PG else 'SQLite (no DATABASE_URL found)'
 class TrackRequest(BaseModel):
     event:        str
     session_id:   str
+    visitor_id:   Optional[str]  = None
     extra:        Optional[str]  = None
     lang:         Optional[str]  = "es"
     referrer:     Optional[str]  = ""
@@ -145,6 +154,7 @@ def track(body: TrackRequest):
         return {"ok": False}
     now        = datetime.now(CHILE_TZ)
     time_label = now.strftime("%H:%M")
+    vid = (body.visitor_id or "").strip()[:64] or None
     try:
         with _lock:
             _insert(
@@ -154,6 +164,7 @@ def track(body: TrackRequest):
                 body.is_returning,
                 now.isoformat(),
                 time_label,
+                vid,
             )
     except Exception as e:
         print(f"[TRACK ERROR] {e}", flush=True)

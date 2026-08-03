@@ -15,12 +15,19 @@ from meta_pixel import (
     get_meta_pixel_id,
     meta_pixel_startup_message,
 )
+from gtm import (
+    apply_gtm_placeholders,
+    get_gtm_container_id,
+    gtm_startup_message,
+)
 
 _ROOT_DIR = Path(__file__).resolve().parent
 _INDEX_PATH = _ROOT_DIR / "index.html"
 _PACKS_PATH = _ROOT_DIR / "packs.html"
 _META_PIXEL_ID = get_meta_pixel_id()
 print(meta_pixel_startup_message(), flush=True)
+_GTM_CONTAINER_ID = get_gtm_container_id()
+print(gtm_startup_message(), flush=True)
 
 CHILE_TZ     = pytz.timezone("America/Santiago")
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
@@ -228,16 +235,18 @@ def session_detail(sid: str):
     ]}
 
 
-# ── Sirve la landing (pixel Meta inyectado si hay META_PIXEL_ID) ─────────────
+# ── Sirve la landing (pixel Meta / GTM inyectados si hay ID configurado) ─────
 def _serve_index() -> HTMLResponse:
     raw = _INDEX_PATH.read_text(encoding="utf-8")
     body = apply_meta_pixel_placeholder(raw, _META_PIXEL_ID)
+    body = apply_gtm_placeholders(body, _GTM_CONTAINER_ID)
     return HTMLResponse(content=body, media_type="text/html; charset=utf-8")
 
 
 def _serve_packs() -> HTMLResponse:
     raw = _PACKS_PATH.read_text(encoding="utf-8")
     body = apply_meta_pixel_placeholder(raw, _META_PIXEL_ID)
+    body = apply_gtm_placeholders(body, _GTM_CONTAINER_ID)
     return HTMLResponse(content=body, media_type="text/html; charset=utf-8")
 
 
